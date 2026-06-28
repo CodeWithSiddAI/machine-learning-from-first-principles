@@ -1,0 +1,64 @@
+# Progress Tracker
+
+## Week 1
+- [ ] Day 1
+- [ ] Day 2
+- [ ] Day 3
+- [ ] Day 4
+- [ ] Day 5
+- [ ] Day 6
+- [ ] Day 7 Project
+- [ ] Revision
+
+## Week 2
+- [ ] Day 8
+- [ ] Day 9
+- [ ] Day 10
+- [ ] Day 11
+- [ ] Day 12
+- [ ] Day 13
+- [ ] Day 14 Project
+- [ ] Revision
+
+## Week 3
+- [ ] Day 15
+- [ ] Day 16
+- [ ] Day 17
+- [ ] Day 18
+- [ ] Day 19
+- [ ] Day 20
+- [ ] Day 21 Project
+- [ ] Revision
+
+## Week 4
+- [ ] Day 22
+- [ ] Day 23
+- [ ] Day 24
+- [ ] Day 25
+- [ ] Day 26
+- [ ] Day 27
+- [ ] Day 28 Project
+- [ ] Revision
+
+## Week 5
+- [ ] Day 29
+- [ ] Day 30
+- [ ] Day 31
+- [ ] Day 32
+- [ ] Day 33
+- [ ] Day 34
+- [ ] Day 35 Project
+- [ ] Revision
+
+## Week 6
+- [ ] Day 36
+- [ ] Day 37
+- [ ] Day 38
+- [ ] Day 39
+- [ ] Day 40
+- [ ] Day 41
+- [ ] Day 42 Project
+- [ ] Revision
+
+
+Notes
