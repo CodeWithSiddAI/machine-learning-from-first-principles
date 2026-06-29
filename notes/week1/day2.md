@@ -1598,16 +1598,14 @@ A **vector** is a collection of related numbers.
 
 A vector is commonly written in bold:
 
-[
-\mathbf{x}
-==========
-
+$$
+\mathbf{x} = 
 \begin{bmatrix}
-2 \
-5 \
+2 \\
+5 \\
 8
 \end{bmatrix}
-]
+$$
 
 Here:
 
@@ -1623,14 +1621,14 @@ In machine learning, the dimension of a vector equals the number of features des
 
 ## Row Vector
 
-[
+$$
 \mathbf{x}
-==========
+=
 
 \begin{bmatrix}
 2 & 5 & 8
 \end{bmatrix}
-]
+$$
 
 Shape:
 
@@ -1646,16 +1644,14 @@ Three columns.
 
 ## Column Vector
 
-[
-\mathbf{x}
-==========
-
+$$
+\mathbf{x} = 
 \begin{bmatrix}
-2 \
-5 \
+2 \\
+5 \\
 8
 \end{bmatrix}
-]
+$$
 
 Shape:
 
@@ -1686,38 +1682,38 @@ Suppose two students improve their scores in different subjects.
 
 Original scores:
 
-[
+$$
 \mathbf{a} =
 \begin{bmatrix}
-70 \
-80 \
+70 \\
+80 \\
 90
 \end{bmatrix}
-]
+$$
 
 Improvement:
 
-[
+$$
 \mathbf{b} =
 \begin{bmatrix}
-5 \
-3 \
+5 \\
+3 \\
 2
 \end{bmatrix}
-]
+$$
 
 Add them component by component:
 
-[
+$$
 \mathbf{a} + \mathbf{b}
-=======================
+=
 
 \begin{bmatrix}
-75 \
-83 \
+75 \\
+83 \\
 92
 \end{bmatrix}
-]
+$$
 
 ### Rule
 
@@ -1729,21 +1725,21 @@ Vectors can only be added if they have the **same number of components**.
 
 Suppose every student's marks are doubled.
 
-[
+$$
 2
 \begin{bmatrix}
-70\
-80\
+70\\
+80\\
 90
 \end{bmatrix}
-=============
+=
 
 \begin{bmatrix}
 140\
 160\
 180
 \end{bmatrix}
-]
+$$
 
 Every component is multiplied by the scalar.
 
