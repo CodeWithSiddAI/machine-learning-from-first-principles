@@ -2643,3 +2643,1275 @@ $$
 
 That operation is matrix–vector multiplication, built on the **dot product**. Once you understand it intuitively, the mathematics of machine learning becomes much more natural.
 
+Excellent. This is the chapter where many students have their first **"aha!" moment** in Machine Learning.
+
+Until now we've learned:
+
+* A **vector** describes one object.
+* A **matrix** stores many objects.
+
+Now we'll answer the question:
+
+> **How does a machine combine all the features of one object into a single prediction?**
+
+The answer is the **dot product**.
+
+---
+
+# Machine Learning From First Principles
+
+# Week 1 – Day 2
+
+# Chapter 2 (Part 5): The Dot Product
+
+> *"The dot product is the operation that transforms many features into one meaningful number."*
+
+---
+
+# Learning Objectives
+
+By the end of this chapter, you will be able to:
+
+* Explain what a dot product is.
+* Understand why it is used in machine learning.
+* Compute dot products by hand.
+* Compute dot products using NumPy.
+* Understand how the dot product becomes the foundation of prediction.
+
+---
+
+# Story-Based Introduction
+
+## Hiring a New Employee
+
+Imagine you're hiring a software engineer.
+
+You decide to evaluate each candidate using four criteria:
+
+| Feature           | Importance |
+| ----------------- | ---------: |
+| Programming Skill |          5 |
+| Communication     |          2 |
+| Problem Solving   |          4 |
+| Experience        |          3 |
+
+Notice something interesting.
+
+Not every feature is equally important.
+
+Programming skill matters more than communication.
+
+Problem solving matters more than experience.
+
+Now suppose Candidate A has the following scores:
+
+| Feature         | Score |
+| --------------- | ----: |
+| Programming     |     9 |
+| Communication   |     8 |
+| Problem Solving |    10 |
+| Experience      |     6 |
+
+How do we combine these four numbers into **one overall score**?
+
+We shouldn't simply add them because programming is more important than communication.
+
+Instead, we **weight** each feature by its importance.
+
+That weighted combination is exactly what the **dot product** computes.
+
+---
+
+# Why Was the Dot Product Invented?
+
+Suppose we want to predict the price of a house.
+
+The features are:
+
+* Size
+* Bedrooms
+* Bathrooms
+* Age
+
+Each feature influences the price differently.
+
+A larger house might add a lot to the price.
+
+An extra bedroom might add a moderate amount.
+
+An older house might reduce the price.
+
+We need a way to combine all of these effects into **one prediction**.
+
+The dot product gives us that mechanism.
+
+---
+
+# Intuition
+
+Think of cooking.
+
+Suppose you're making lemonade.
+
+Ingredients:
+
+* Water
+* Sugar
+* Lemon juice
+
+Each ingredient contributes differently to the final taste.
+
+You don't just count the ingredients.
+
+You decide **how much** of each ingredient to use.
+
+Machine learning does the same thing.
+
+Features are the ingredients.
+
+Weights decide how important each ingredient is.
+
+The dot product mixes them into a single result.
+
+---
+
+# Visual Explanation
+
+Suppose we have:
+
+Student features:
+
+$$
+\mathbf{x} =
+\begin{bmatrix}
+8 \
+95 \
+12
+\end{bmatrix}
+$$
+
+Model weights:
+
+$$
+\mathbf{w} =
+\begin{bmatrix}
+4 \
+0.3 \
+2
+\end{bmatrix}
+$$
+
+The dot product pairs each feature with its corresponding weight:
+
+```text
+Hours Studied      × Weight
+      8            ×   4
+
+Attendance         × Weight
+      95           × 0.3
+
+Assignments        × Weight
+      12           ×   2
+```
+
+Then it adds all of the results together.
+
+---
+
+# Feynman Explanation
+
+Imagine explaining this to a 10-year-old.
+
+Suppose your teacher says:
+
+> Homework counts twice as much as attendance.
+
+Now your report card isn't just adding marks.
+
+Some things matter more than others.
+
+The teacher multiplies each score by its importance and then adds everything together.
+
+That is exactly what the dot product does.
+
+---
+
+# Mathematical Foundations
+
+Suppose
+
+$$
+\mathbf{x} =
+\begin{bmatrix}
+x_1 \
+x_2 \
+x_3
+\end{bmatrix}
+$$
+
+and
+
+$$
+\mathbf{w} =
+\begin{bmatrix}
+w_1 \
+w_2 \
+w_3
+\end{bmatrix}
+$$
+
+Their dot product is
+
+$$
+\mathbf{x}\cdot\mathbf{w}
+=========================
+
+x_1w_1+x_2w_2+x_3w_3
+$$
+
+### What do the symbols mean?
+
+* $\mathbf{x}$ = feature vector
+* $\mathbf{w}$ = weight vector
+* $x_i$ = the $i^{th}$ feature
+* $w_i$ = the weight for the $i^{th}$ feature
+
+Each feature is multiplied by **its own corresponding weight**, and all those products are summed into a single number.
+
+---
+
+# Worked Example 1
+
+Student:
+
+$$
+\mathbf{x} =
+\begin{bmatrix}
+8 \
+95 \
+12
+\end{bmatrix}
+$$
+
+Weights:
+
+$$
+\mathbf{w} =
+\begin{bmatrix}
+4 \
+0.3 \
+2
+\end{bmatrix}
+$$
+
+Step 1:
+
+Multiply corresponding entries.
+
+$$
+8\times4=32
+$$
+
+$$
+95\times0.3=28.5
+$$
+
+$$
+12\times2=24
+$$
+
+Step 2:
+
+Add them.
+
+$$
+32+28.5+24=84.5
+$$
+
+The dot product equals
+
+$$
+84.5
+$$
+
+---
+
+# Worked Example 2
+
+$$
+\mathbf{a}=
+\begin{bmatrix}
+2\
+3\
+4
+\end{bmatrix}
+$$
+
+$$
+\mathbf{b}=
+\begin{bmatrix}
+5\
+6\
+7
+\end{bmatrix}
+$$
+
+Compute:
+
+$$
+2\times5
++
+3\times6
++
+4\times7
+$$
+
+$$
+10+18+28=56
+$$
+
+Answer:
+
+$$
+56
+$$
+
+---
+
+# Why This Is So Important
+
+Remember Day 1?
+
+We said the goal of machine learning is to predict something.
+
+The prediction equation for linear regression is
+
+$$
+\hat{y}=Xw+b
+$$
+
+Let's focus on
+
+$$
+Xw
+$$
+
+Suppose
+
+$$
+X=
+\begin{bmatrix}
+8 & 95 & 12
+\end{bmatrix}
+$$
+
+and
+
+$$
+w=
+\begin{bmatrix}
+4\
+0.3\
+2
+\end{bmatrix}
+$$
+
+The multiplication
+
+$$
+Xw
+$$
+
+is simply a **dot product**.
+
+That means every prediction in linear regression starts by computing a weighted sum of the features.
+
+This is why the dot product is one of the most fundamental operations in machine learning.
+
+---
+
+# Python Implementation
+
+Using NumPy:
+
+```python
+import numpy as np
+
+x = np.array([8, 95, 12])
+w = np.array([4, 0.3, 2])
+
+prediction = np.dot(x, w)
+
+print(prediction)
+```
+
+Output:
+
+```text
+84.5
+```
+
+---
+
+## Using the `@` Operator
+
+NumPy also supports matrix multiplication using `@`:
+
+```python
+prediction = x @ w
+
+print(prediction)
+```
+
+Output:
+
+```text
+84.5
+```
+
+Both approaches produce the same result for 1D vectors.
+
+---
+
+# Common Mistakes
+
+!!! warning "Common Mistakes"
+
+```
+1. Multiplying every feature by every weight. Each feature should only be multiplied by its corresponding weight.
+2. Forgetting to add the products after multiplying.
+3. Taking the dot product of vectors with different lengths.
+4. Confusing element-wise multiplication (`x * w`) with the dot product (`np.dot(x, w)`).
+```
+
+---
+
+# Practice Problems
+
+## Easy
+
+1. Compute the dot product:
+
+$$
+\begin{bmatrix}
+1\
+2\
+3
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+4\
+5\
+6
+\end{bmatrix}
+$$
+
+2. Can you compute the dot product of vectors with different numbers of components? Why?
+
+3. In machine learning, what do the **weights** represent?
+
+---
+
+## Medium
+
+1. Compute the dot product by hand:
+
+$$
+\begin{bmatrix}
+5\
+2\
+7
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+3\
+4\
+1
+\end{bmatrix}
+$$
+
+2. Write a NumPy program that computes the dot product of:
+
+```python
+x = np.array([3, 6, 9])
+w = np.array([2, 5, 1])
+```
+
+3. What is the difference between:
+
+```python
+x * w
+```
+
+and
+
+```python
+np.dot(x, w)
+```
+
+---
+
+## Challenge
+
+A house is described by the feature vector:
+
+$$
+\mathbf{x}=
+\begin{bmatrix}
+2000\
+3\
+10
+\end{bmatrix}
+$$
+
+where the features are:
+
+* Size (sq ft)
+* Bedrooms
+* Age (years)
+
+The model has learned the weights:
+
+$$
+\mathbf{w}=
+\begin{bmatrix}
+120\
+15000\
+-2000
+\end{bmatrix}
+$$
+
+1. Compute the dot product by hand.
+2. Explain why the third weight is negative.
+3. Which feature contributes the most to the prediction?
+
+---
+
+# Coding Assignment
+
+Using NumPy:
+
+1. Create two vectors of length **5**.
+2. Compute their dot product using `np.dot()`.
+3. Compute the same result using the `@` operator.
+4. Verify that both answers are identical.
+5. Compute the element-wise multiplication using `*`.
+6. Explain, in your own words, why the result of `*` is different from the dot product.
+
+---
+
+# Interview Questions
+
+1. What is a dot product?
+2. Why is the dot product important in machine learning?
+3. What do the weights represent?
+4. Can vectors of different lengths have a dot product?
+5. What is the difference between element-wise multiplication and the dot product?
+6. How does the dot product relate to the prediction equation $\hat{y} = Xw + b$?
+
+---
+
+# Reflection
+
+Before moving to **Broadcasting**, ask yourself:
+
+* Can I compute a dot product by hand?
+* Do I understand why each feature has a corresponding weight?
+* Can I explain the difference between `x * w` and `np.dot(x, w)`?
+* Can I see why the dot product naturally produces a single prediction?
+
+If you can answer **yes**, you've just learned one of the most important mathematical operations in machine learning. The next topic—**Broadcasting**—will show you how NumPy performs operations on arrays of different shapes efficiently, a feature you'll use constantly when implementing ML algorithms.
+
+Excellent. This is the final major topic of **Week 1 – Day 2**.
+
+Many beginners think broadcasting is a "NumPy trick."
+
+It isn't.
+
+Broadcasting is one of the reasons NumPy is so powerful. Once you understand it, you'll see it used everywhere—in **Linear Regression, Neural Networks, TensorFlow, PyTorch, and almost every ML library**.
+
+---
+
+# Machine Learning From First Principles
+
+# Week 1 – Day 2
+
+# Chapter 2 (Part 6): Broadcasting
+
+> *"Broadcasting lets NumPy perform operations between arrays of different shapes without manually copying data."*
+
+---
+
+# Learning Objectives
+
+By the end of this chapter, you will be able to:
+
+* Explain why broadcasting exists.
+* Understand the intuition behind broadcasting.
+* Know the broadcasting rules.
+* Predict when broadcasting will succeed or fail.
+* Use broadcasting in NumPy programs.
+* Recognize where broadcasting is used in machine learning.
+
+---
+
+# Story-Based Introduction
+
+## The Teacher and the Bonus Marks
+
+A teacher has the marks of five students stored in a table.
+
+| Student | Math | Science | English |
+| ------- | ---- | ------- | ------- |
+| A       | 70   | 75      | 80      |
+| B       | 85   | 90      | 88      |
+| C       | 60   | 65      | 70      |
+| D       | 95   | 92      | 96      |
+| E       | 78   | 80      | 82      |
+
+One day, the teacher decides:
+
+> "Everyone gets **5 bonus marks**."
+
+There are two ways to do this.
+
+### Method 1
+
+Go through every subject of every student and add 5 manually.
+
+Very slow.
+
+### Method 2
+
+Tell the computer:
+
+```python
+marks + 5
+```
+
+NumPy automatically understands:
+
+> "Add 5 to every element."
+
+You never wrote a loop.
+
+This automatic expansion is called **broadcasting**.
+
+---
+
+# Why Was Broadcasting Invented?
+
+Imagine a dataset with:
+
+* 10 million students
+* 50 features each
+
+Without broadcasting, you would need nested loops.
+
+```python
+for every student:
+    for every feature:
+        ...
+```
+
+Besides being longer to write, explicit Python loops are much slower than NumPy's optimized operations.
+
+Broadcasting lets NumPy apply the operation internally, using highly optimized code.
+
+---
+
+# Intuition
+
+Imagine a teacher announcing:
+
+> "Everyone in this classroom gets one extra notebook."
+
+The teacher doesn't hand each notebook individually in your mental model.
+
+The instruction applies to **everyone**.
+
+Broadcasting works the same way.
+
+A single value can behave **as if** it were repeated across an entire array.
+
+The important point is that NumPy **acts as though** the value is copied—it doesn't necessarily create millions of actual copies in memory.
+
+---
+
+# Visual Explanation
+
+Suppose we have:
+
+```text
+Marks
+
+[70 80 90]
+```
+
+Add:
+
+```text
+5
+```
+
+NumPy behaves **as if** it first created:
+
+```text
+[5 5 5]
+```
+
+Then performs:
+
+```text
+[70 80 90]
++
+[ 5  5  5]
+---------
+[75 85 95]
+```
+
+Notice that you only wrote:
+
+```python
+marks + 5
+```
+
+The expansion happens automatically.
+
+---
+
+# Feynman Explanation
+
+Imagine explaining broadcasting to a younger sibling.
+
+You could say:
+
+> Suppose I tell everyone in your class to stand up.
+
+I don't need to point to each student one by one.
+
+One instruction applies to everyone.
+
+Broadcasting is the same idea.
+
+One value is applied across many values automatically.
+
+---
+
+# Mathematical Foundations
+
+Suppose
+
+$$
+\mathbf{x} =
+\begin{bmatrix}
+70\
+80\
+90
+\end{bmatrix}
+$$
+
+and we compute
+
+$$
+\mathbf{x}+5
+$$
+
+Mathematically, NumPy behaves as though we had written
+
+$$
+\begin{bmatrix}
+70\
+80\
+90
+\end{bmatrix}
++
+\begin{bmatrix}
+5\
+5\
+5
+\end{bmatrix}
+=============
+
+\begin{bmatrix}
+75\
+85\
+95
+\end{bmatrix}
+$$
+
+Remember:
+
+> NumPy **behaves as if** the scalar becomes a vector.
+
+It does **not** literally allocate a new vector filled with 5s in memory.
+
+---
+
+# Broadcasting Rules
+
+Broadcasting follows simple rules.
+
+Starting from the **last dimension**, NumPy compares the shapes.
+
+Two dimensions are compatible if:
+
+1. They are equal.
+2. One of them is `1`.
+
+Otherwise,
+
+❌ Broadcasting fails.
+
+---
+
+## Example 1
+
+Shape:
+
+```text
+(3,)
+```
+
+*
+
+Scalar
+
+```text
+()
+```
+
+Result:
+
+✅ Works
+
+---
+
+## Example 2
+
+```text
+(3,3)
+
++
+
+(3,)
+```
+
+Works.
+
+Visualization:
+
+```text
+1 2 3
+4 5 6
+7 8 9
+
++
+
+10 20 30
+
+↓
+
+11 22 33
+14 25 36
+17 28 39
+```
+
+The row vector is applied to every row.
+
+---
+
+## Example 3
+
+```text
+(3,2)
+
++
+
+(2,)
+```
+
+Works.
+
+Each row receives the two values.
+
+---
+
+## Example 4
+
+```text
+(3,2)
+
++
+
+(3,)
+```
+
+Fails.
+
+Why?
+
+Compare from the last dimension:
+
+```text
+(3,2)
+   ↑
+
+(3,)
+ ↑
+```
+
+Last dimensions:
+
+```text
+2
+
+vs
+
+3
+```
+
+Not equal.
+
+Neither is 1.
+
+NumPy raises an error.
+
+---
+
+# Worked Examples
+
+## Example 1
+
+```python
+import numpy as np
+
+marks = np.array([70, 80, 90])
+
+print(marks + 5)
+```
+
+Output
+
+```text
+[75 85 95]
+```
+
+---
+
+## Example 2
+
+```python
+A = np.array([
+    [1,2,3],
+    [4,5,6]
+])
+
+B = np.array([10,20,30])
+
+print(A + B)
+```
+
+Output
+
+```text
+[[11 22 33]
+ [14 25 36]]
+```
+
+Broadcasting applied `B` to every row.
+
+---
+
+## Example 3
+
+```python
+A = np.array([
+    [1,2],
+    [3,4]
+])
+
+B = np.array([10,20,30])
+
+print(A + B)
+```
+
+Output
+
+```text
+ValueError:
+operands could not be broadcast together
+```
+
+This happens because the shapes are incompatible.
+
+---
+
+# Why Broadcasting Matters in Machine Learning
+
+Suppose your prediction equation is
+
+$$
+\hat{y}=Xw+b
+$$
+
+Here:
+
+* $Xw$ produces one prediction for each training example.
+* $b$ is a **single number** called the **bias**.
+
+If there are five predictions,
+
+$$
+\begin{bmatrix}
+82\
+75\
+91\
+88\
+79
+\end{bmatrix}
++
+3
+$$
+
+NumPy broadcasts the bias:
+
+$$
+\begin{bmatrix}
+82\
+75\
+91\
+88\
+79
+\end{bmatrix}
++
+\begin{bmatrix}
+3\
+3\
+3\
+3\
+3
+\end{bmatrix}
+=============
+
+\begin{bmatrix}
+85\
+78\
+94\
+91\
+82
+\end{bmatrix}
+$$
+
+This is exactly how we'll implement Linear Regression tomorrow.
+
+---
+
+# Python Implementation
+
+### Scalar Broadcasting
+
+```python
+import numpy as np
+
+x = np.array([10, 20, 30])
+
+print(x + 5)
+```
+
+---
+
+### Row Broadcasting
+
+```python
+A = np.array([
+    [1,2,3],
+    [4,5,6]
+])
+
+B = np.array([10,20,30])
+
+print(A + B)
+```
+
+---
+
+### Column Broadcasting
+
+```python
+A = np.array([
+    [1,2],
+    [3,4],
+    [5,6]
+])
+
+B = np.array([
+    [10],
+    [20],
+    [30]
+])
+
+print(A + B)
+```
+
+Output
+
+```text
+[[11 12]
+ [23 24]
+ [35 36]]
+```
+
+Notice the shape of `B` is `(3, 1)`.
+
+It is broadcast across the columns.
+
+---
+
+# Common Mistakes
+
+!!! warning "Common Mistakes"
+
+```
+1. Thinking broadcasting always works.
+2. Forgetting that NumPy compares shapes from the **last dimension**.
+3. Assuming broadcasting physically copies the data.
+4. Confusing row vectors `(3,)` with column vectors `(3,1)`.
+5. Ignoring the shape of arrays before performing operations.
+```
+
+---
+
+# Practice Problems
+
+## Easy
+
+1. Predict the output of:
+
+```python
+np.array([2,4,6]) + 3
+```
+
+2. Will `(4,)` and `()` broadcast successfully? Why?
+
+3. What does broadcasting save us from writing?
+
+---
+
+## Medium
+
+1. What is the result of:
+
+```python
+A = np.array([
+    [1,2],
+    [3,4]
+])
+
+B = np.array([10,20])
+
+A + B
+```
+
+2. Will `(2,3)` and `(3,)` broadcast? Explain.
+
+3. Will `(2,3)` and `(2,)` broadcast? Why or why not?
+
+---
+
+## Challenge
+
+Without running Python, determine whether each operation succeeds or fails.
+
+1.
+
+```text
+(5,4)
++
+(4,)
+```
+
+2.
+
+```text
+(5,4)
++
+(5,1)
+```
+
+3.
+
+```text
+(5,4)
++
+(5,)
+```
+
+For each one:
+
+* State **Works** or **Fails**.
+* Explain your reasoning using the broadcasting rules.
+
+---
+
+# Coding Assignment
+
+Create the following matrix:
+
+```python
+X = np.array([
+    [10,20,30],
+    [40,50,60],
+    [70,80,90]
+])
+```
+
+Then:
+
+1. Add `5` to every element.
+2. Add the row vector:
+
+```python
+np.array([1,2,3])
+```
+
+3. Add the column vector:
+
+```python
+np.array([
+    [10],
+    [20],
+    [30]
+])
+```
+
+4. Print the shape of every array before performing the operations.
+5. Explain **why broadcasting succeeds** in each case.
+
+---
+
+# Interview Questions
+
+1. What is broadcasting in NumPy?
+2. Why was broadcasting introduced?
+3. What are the two broadcasting compatibility rules?
+4. Does broadcasting physically copy data in memory?
+5. Why is broadcasting useful in machine learning?
+6. Give an example where broadcasting fails.
+
+---
+
+# Reflection
+
+Before ending **Week 1 – Day 2**, ask yourself:
+
+* Can I explain broadcasting without mentioning NumPy documentation?
+* Can I predict when broadcasting will succeed or fail by comparing shapes?
+* Do I understand the difference between scalar, row, and column broadcasting?
+* Can I explain why broadcasting is essential for equations like
+
+$$
+\hat{y} = Xw + b
+$$
+
+If the answer is **yes**, you've completed one of the most important foundations for implementing machine learning algorithms. Tomorrow, we'll use everything you've learned—vectors, matrices, dot products, and broadcasting—to build your first machine learning model: **Linear Regression** from first principles.
