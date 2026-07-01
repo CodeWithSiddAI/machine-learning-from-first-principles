@@ -90,9 +90,9 @@ A function is simply a rule that maps an input to an output.
 
 For example:
 
-[
+$$
 f(x) = 2x + 3
-]
+$$
 
 If:
 
@@ -137,14 +137,14 @@ Every hour, your distance increases by **60 km**.
 
 The **rate of change** is:
 
-[
+$$
 \frac{\text{Change in Distance}}{\text{Change in Time}}
-=======================================================
-
-# \frac{60}{1}
+=
+\frac{60}{1}
+=
 
 60\ \text{km/h}
-]
+$$
 
 This is simply your speed.
 
@@ -356,9 +356,10 @@ Suppose your car travels:
 
 Average speed:
 
-[
+
+$$
 \frac{120-0}{2-0}=60\text{ km/h}
-]
+$$
 
 This tells us the average over two hours.
 
@@ -418,41 +419,41 @@ The slope of that tiny straight line is the **derivative**.
 
 Suppose we have a function:
 
-[
+$$
 f(x)
-]
+$$
 
 We move a tiny distance (h).
 
 Our new input becomes:
 
-[
+$$
 x+h
-]
+$$
 
 The function changes to:
 
-[
+$$
 f(x+h)
-]
+$$
 
 The change in output is:
 
-[
+$$
 f(x+h)-f(x)
-]
+$$
 
 The change in input is:
 
-[
+$$
 h
-]
+$$
 
 So the average slope is:
 
-[
+$$
 \frac{f(x+h)-f(x)}{h}
-]
+$$
 
 Now imagine making (h) smaller and smaller.
 
@@ -460,13 +461,13 @@ Eventually it approaches zero.
 
 The derivative is:
 
-[
+$$
 \boxed{
 f'(x)=
 \lim_{h\to0}
 \frac{f(x+h)-f(x)}{h}
 }
-]
+$$
 
 Don't panic.
 
@@ -497,19 +498,19 @@ The limit allows us to transition from an average slope over an interval to the 
 
 Let's find the derivative of:
 
-[
+$$
 f(x)=x^2
-]
+$$
 
 ### Step 1
 
 Write the definition.
 
-[
+$$
 f'(x)=
 \lim_{h\to0}
 \frac{(x+h)^2-x^2}{h}
-]
+$$
 
 ---
 
@@ -526,10 +527,10 @@ x^2+2xh+h^2
 
 Substitute:
 
-# [
-
+$$
+=
 \frac{x^2+2xh+h^2-x^2}{h}
-]
+$$
 
 ---
 
@@ -537,23 +538,23 @@ Substitute:
 
 Cancel like terms.
 
-# [
-
+$$
+=
 \frac{2xh+h^2}{h}
-]
+$$
 
 Factor out (h):
 
-# [
-
+$$
+=
 \frac{h(2x+h)}{h}
-]
+$$
 
 Cancel (h):
 
-[
+$$
 =2x+h
-]
+$$
 
 ---
 
@@ -561,21 +562,21 @@ Cancel (h):
 
 Take the limit.
 
-As (h\to0):
+As $(h\to0):$
 
-[
+$$
 2x+h
 \rightarrow
 2x
-]
+$$
 
 Therefore:
 
-[
+$$
 \boxed{
 \frac{d}{dx}(x^2)=2x
 }
-]
+$$
 
 This is the derivative of (x^2).
 
@@ -585,21 +586,21 @@ This is the derivative of (x^2).
 
 Suppose:
 
-[
+$$
 f(x)=x^2
-]
+$$
 
 At:
 
-[
+$$
 x=3
-]
+$$
 
 Derivative:
 
-[
+$$
 2x=6
-]
+$$
 
 Interpretation:
 
@@ -615,9 +616,9 @@ The first-principles definition is beautiful, but it's slow.
 
 Imagine differentiating:
 
-[
+$
 5x^7+3x^5-8x^2+10
-]
+$
 
 Every time.
 
@@ -631,9 +632,9 @@ So mathematicians discovered shortcut rules.
 
 If:
 
-[
+$
 f(x)=10
-]
+$
 
 No matter how (x) changes, the output stays at 10.
 
@@ -651,27 +652,27 @@ Slope:
 
 Therefore:
 
-[
+$$
 \boxed{
 \frac{d}{dx}(c)=0
 }
-]
+$$
 
 where (c) is any constant.
 
 Examples:
 
-[
+$$
 \frac{d}{dx}(7)=0
-]
+$$
 
-[
+$$
 \frac{d}{dx}(100)=0
-]
+$$
 
-[
+$$
 \frac{d}{dx}(\pi)=0
-]
+$$
 
 ---
 
@@ -681,17 +682,17 @@ This is one of the most important rules in Machine Learning.
 
 If:
 
-[
+$$
 f(x)=x^n
-]
+$$
 
 then
 
-[
+$$
 \boxed{
 \frac{d}{dx}(x^n)=nx^{n-1}
 }
-]
+$$
 
 Examples:
 
@@ -714,40 +715,38 @@ Notice the pattern:
 
 If a constant multiplies a function:
 
-[
+$$
 f(x)=5x^3
-]
+$$
 
 Leave the constant alone and differentiate the function.
 
-[
+$$
 \boxed{
 \frac{d}{dx}[c,f(x)]
-====================
+=
 
 c,f'(x)
 }
-]
+$$
 
 Example:
 
-[
+$$
 \frac{d}{dx}(5x^3)
-==================
-
-# 5(3x^2)
+=
 
 15x^2
-]
+$$
+
 
 Another:
 
-[
+$$
 \frac{d}{dx}(8x^2)
-==================
-
+=
 16x
-]
+$$
 
 ---
 
@@ -757,34 +756,34 @@ Differentiate each term independently.
 
 Example:
 
-[
+$$
 f(x)
-====
+=
 
 x^3
 +
 4x^2
 +
 7
-]
+$$
 
 Derivative:
 
-[
+$$
 3x^2
 +
 8x
 +
 0
-]
+$$
 
 Final answer:
 
-[
+$$
 \boxed{
 3x^2+8x
 }
-]
+$$
 
 ---
 
@@ -794,57 +793,57 @@ Find the derivatives.
 
 ### Question 1
 
-[
+$$
 x^5
-]
+$$
 
 Answer:
 
-[
+$$
 5x^4
-]
+$$
 
 ---
 
 ### Question 2
 
-[
+$$
 6x^3
-]
+$$
 
 Answer:
 
-[
+$$
 18x^2
-]
+$$
 
 ---
 
 ### Question 3
 
-[
+$$
 7
-]
+$$
 
 Answer:
 
-[
+$$
 0
-]
+$$
 
 ---
 
 ### Question 4
 
-[
+$$
 x^4+3x^2+10
-]
+$$
 
 Answer:
 
-[
+$$
 4x^3+6x
-]
+$$
 
 ---
 
@@ -852,9 +851,9 @@ Answer:
 
 Recall the cost function from Day 3:
 
-[
+$$
 J(w,b)
-]
+$$
 
 We want to know:
 
@@ -903,21 +902,21 @@ Gradient Descent uses it repeatedly to guide the model toward the lowest possibl
 
 Example:
 
-[
+$$
 \frac{d}{dx}(x^4)
-]
+$$
 
 Correct:
 
-[
+$$
 4x^3
-]
+$$
 
 Not:
 
-[
+$$
 4x^4
-]
+$$
 
 ---
 
@@ -1043,9 +1042,9 @@ That question leads directly to **partial derivatives** and **gradients**.
 
 In Day 3, our Linear Regression model was:
 
-[
+$$
 \hat{y} = wx + b
-]
+$$
 
 Notice something important.
 
@@ -1058,9 +1057,9 @@ We have **two parameters**:
 
 Our cost function is therefore:
 
-[
+$$
 J(w,b)
-]
+$$
 
 This means the cost changes if:
 
@@ -1101,9 +1100,9 @@ Machine Learning does the same thing.
 
 When calculating:
 
-[
+$$
 \frac{\partial J}{\partial w}
-]
+$$
 
 we pretend **only (w) changes**.
 
@@ -1115,17 +1114,17 @@ Everything else stays fixed.
 
 You've seen:
 
-[
+$$
 \frac{d}{dx}
-]
+$$
 
 for ordinary derivatives.
 
 For partial derivatives we use:
 
-[
+$$
 \frac{\partial}{\partial x}
-]
+$$
 
 The curly symbol **∂** reminds us:
 
@@ -1145,12 +1144,12 @@ f(x,y)=3x^2+2y
 
 Treat (y) as a constant.
 
-[
+$$
 \frac{\partial f}{\partial x}
-=============================
+=
 
 6x
-]
+$$
 
 because
 
@@ -1163,12 +1162,12 @@ because
 
 Now keep (x) fixed.
 
-[
+$$
 \frac{\partial f}{\partial y}
-=============================
+=
 
 2
-]
+$$
 
 because
 
@@ -1210,27 +1209,27 @@ Instead of computing one derivative, we compute one for each parameter.
 
 For Linear Regression:
 
-[
+$$
 J(w,b)
-]
+$$
 
 the gradient is
 
-[
+$$
 \nabla J
-========
+=
 
 \left[
 \frac{\partial J}{\partial w},
 \frac{\partial J}{\partial b}
 \right]
-]
+$$
 
 The symbol
 
-[
+$$
 \nabla
-]
+$$
 
 (pronounced **"nabla"** or **"del"**) represents the **gradient operator**.
 
@@ -1352,9 +1351,9 @@ Output:
 
 The exact derivative of (x^2) at (x = 3) is:
 
-[
+$$
 2x = 6
-]
+$$
 
 The approximation is very close because (h) is very small.
 
@@ -1422,9 +1421,9 @@ This is the complete learning loop of a basic machine learning model.
 
 When calculating:
 
-[
+$$
 \frac{\partial J}{\partial w}
-]
+$$
 
 only **(w)** changes.
 
@@ -1456,23 +1455,23 @@ To minimize a function, move in the **negative gradient direction**.
 
 Given:
 
-[
+$$
 f(x,y)=4x^2+5y
-]
+$$
 
 Find:
 
 a)
 
-[
+$$
 \frac{\partial f}{\partial x}
-]
+$$
 
 b)
 
-[
+$$
 \frac{\partial f}{\partial y}
-]
+$$
 
 ---
 
@@ -1486,15 +1485,15 @@ Find:
 
 a)
 
-[
+$$
 \frac{\partial f}{\partial x}
-]
+$$
 
 b)
 
-[
+$$
 \frac{\partial f}{\partial y}
-]
+$$
 
 ---
 
@@ -1512,9 +1511,9 @@ Explain, in your own words:
 
 Write a Python function that approximates the derivative of:
 
-[
+$$
 f(x)=x^3
-]
+$$
 
 using finite differences.
 
@@ -1526,9 +1525,9 @@ Test it at:
 
 Compare your results with the analytical derivative:
 
-[
+$$
 3x^2
-]
+$$
 
 ---
 
@@ -1572,35 +1571,35 @@ Modify your function so you can approximate the derivative of **any** single-var
 
 For:
 
-[
+$$
 f(x,y)=4x^2+5y
-]
+$$
 
-[
+$$
 \frac{\partial f}{\partial x}=8x
-]
+$$
 
-[
+$$
 \frac{\partial f}{\partial y}=5
-]
+$$
 
 ---
 
 For:
 
-[
+$$
 f(x,y)=x^3+2xy
-]
+$$
 
 Treating the other variable as constant:
 
-[
+$$
 \frac{\partial f}{\partial x}=3x^2+2y
-]
+$$
 
-[
+$$
 \frac{\partial f}{\partial y}=2x
-]
+$$
 
 ---
 
