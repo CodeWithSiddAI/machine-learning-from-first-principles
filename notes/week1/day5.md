@@ -1472,13 +1472,7 @@ For Linear Regression, the derivatives simplify to:
 
 $$
 \boxed{
-\frac{\partial J}{\partial w}
-=
-
-\frac1m
-\sum_{i=1}^{m}
-(\hat y_i-y_i)x_i
-}
+\frac{\partial J}{\partial w} = \frac1m \sum_{i=1}^{m} (\hat y_i-y_i)x_i}
 $$
 
 ---
@@ -1487,13 +1481,7 @@ $$
 
 $$
 \boxed{
-\frac{\partial J}{\partial b}
-=
-
-\frac1m
-\sum_{i=1}^{m}
-(\hat y_i-y_i)
-}
+\frac{\partial J}{\partial b} = \frac1m \sum_{i=1}^{m} (\hat y_i-y_i)}
 $$
 
 Notice something interesting.
@@ -1562,11 +1550,7 @@ Only the prediction error matters.
 Hence,
 
 $$
-\frac{\partial J}{\partial b}
-=
-
-\frac1m
-\sum(\hat y-y)
+\frac{\partial J}{\partial b} = \frac1m \sum(\hat y-y)
 $$
 
 No multiplication by $x$.
