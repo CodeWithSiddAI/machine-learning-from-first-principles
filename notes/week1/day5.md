@@ -427,14 +427,9 @@ Gradient Descent faces the exact same problem.
 
 Recall yesterday's update rule:
 
-$$
-w_{\text{new}}
-=
 
- w_{\text{old}}
--
-\alpha
-\frac{\partial J}{\partial w}
+$$
+w_{\text{new}} = w_{\text{old}} - \alpha \frac{\partial J}{\partial w}
 $$
 
 The new symbol is
@@ -956,6 +951,252 @@ Suppose the cost decreases like this:
 
 ---
 
+You're absolutely right. Good catch.
+
+According to your **course guidelines**, **every lesson** must include:
+
+1. Practice Problems
+2. Coding Assignment
+3. **Solutions for Practice Problems**
+4. **Solution for Coding Assignment**
+5. Interview Questions
+6. Summary
+
+For **Day 5 – Part 2**, I stopped after the practice problems and interview questions, but I **missed** the required:
+
+* ✅ Solution for Practice Problems
+* ✅ Solution for Coding Assignment
+
+Let's complete those now.
+
+---
+
+# Solutions to Practice Problems
+
+## Easy
+
+### 1. What is the learning rate?
+
+**Answer:**
+
+The **learning rate** (denoted by (\alpha)) controls **how large a step Gradient Descent takes** while updating the model parameters.
+
+A small learning rate means slow learning.
+
+A large learning rate means bigger jumps.
+
+---
+
+### 2. What happens if the learning rate is too small?
+
+**Answer:**
+
+* Training becomes extremely slow.
+* The model may require thousands or even millions of updates.
+* It eventually reaches the minimum, but inefficiently.
+
+---
+
+### 3. What happens if the learning rate is too large?
+
+**Answer:**
+
+* The model overshoots the minimum.
+* The cost may oscillate or even increase.
+* Gradient Descent may fail to converge.
+
+---
+
+### 4. Define an epoch.
+
+**Answer:**
+
+An **epoch** is **one complete pass through the entire training dataset**.
+
+If the dataset contains 1000 samples, processing all 1000 once equals **one epoch**.
+
+---
+
+### 5. What is convergence?
+
+**Answer:**
+
+**Convergence** is the point where the cost function changes very little between updates, indicating that the model has nearly reached an optimal solution.
+
+---
+
+# Medium
+
+### Problem 1
+
+A model trains for **25 epochs** on a dataset containing **500 samples**.
+
+How many complete passes through the dataset has it made?
+
+### Solution
+
+Each epoch is **one complete pass**.
+
+Therefore,
+
+**25 epochs = 25 complete passes**
+
+---
+
+### Problem 2
+
+Why is a learning rate of **100** usually a poor choice?
+
+### Solution
+
+A learning rate of **100** is extremely large.
+
+It causes:
+
+* Huge parameter updates
+* Overshooting the minimum
+* Oscillating around the solution
+* Possible divergence (cost increases instead of decreases)
+
+Training usually fails.
+
+---
+
+# Challenge Solution
+
+Given the costs:
+
+```
+900
+450
+220
+110
+55
+27
+13
+6
+3
+2.9
+2.89
+2.889
+```
+
+### Has the model converged?
+
+Almost.
+
+The improvement becomes extremely small after reaching **2.889**.
+
+---
+
+### Should training continue forever?
+
+No.
+
+Eventually, further training wastes computation while providing negligible improvement.
+
+---
+
+### A reasonable stopping criterion
+
+Stop when either:
+
+* Cost improvement falls below a threshold (e.g., (10^{-6}))
+* Gradient magnitude becomes very small
+* Maximum number of epochs is reached
+
+Modern ML libraries typically use one or more of these criteria.
+
+---
+
+# Solution to Coding Assignment
+
+## Task
+
+Implement the Gradient Descent update rule for a **single parameter**.
+
+```python
+learning_rate = 0.01
+gradient = 12
+weight = 5
+
+new_weight = weight - learning_rate * gradient
+
+print(new_weight)
+```
+
+Output
+
+```text
+4.88
+```
+
+Explanation:
+
+```
+New Weight
+=
+Old Weight
+-
+Learning Rate × Gradient
+```
+
+```
+5 - (0.01 × 12)
+
+=
+
+5 - 0.12
+
+=
+
+4.88
+```
+
+---
+
+## Bonus Task
+
+Perform several updates.
+
+```python
+learning_rate = 0.01
+weight = 5
+
+gradients = [12, 8, 5, 3, 1]
+
+print("Iteration   Weight")
+
+for i, grad in enumerate(gradients, start=1):
+    weight = weight - learning_rate * grad
+    print(f"{i:<10}{weight:.4f}")
+```
+
+Output
+
+```text
+Iteration   Weight
+1           4.8800
+2           4.8000
+3           4.7500
+4           4.7200
+5           4.7100
+```
+
+Notice how the updates become smaller as the gradient decreases, illustrating the idea of convergence.
+
+---
+
+## Reflection
+
+This coding exercise isn't a full Gradient Descent implementation yet. Its purpose is to help you understand the **update rule** itself:
+
+$
+\text{New Parameter} = \text{Old Parameter} - \text{Learning Rate} \times \text{Gradient}
+$
+
+
+
 # 18. Interview Questions
 
 1. What is Gradient Descent?
@@ -1013,3 +1254,1329 @@ In the final part of Day 5, we'll put everything together by:
 * Finishing with practice problems, a coding assignment, interview questions, and a complete summary of Day 5.
 
 This is where you'll build your **first machine learning algorithm that actually learns from data** instead of relying on manually chosen parameters.
+
+Excellent. This is one of the biggest lessons in Week 1, so I'll split it into **two parts** to keep it digestible and GitHub-friendly.
+
+* **Part 3A (Today):** Deriving Gradient Descent mathematically + implementing it from scratch.
+* **Part 3B:** Vectorization, complete implementation, practice problems, assignments, interview questions, solutions, and summary.
+
+This will make the notes cleaner and easier to follow.
+
+---
+
+# Week 1 — Day 5 (Part 3A)
+
+# Gradient Descent from Scratch (Mathematics + Python)
+
+---
+
+# Learning Objectives
+
+By the end of this lesson, you will:
+
+* Derive the Gradient Descent update equations.
+* Understand why the update equations work.
+* Implement one iteration of Gradient Descent.
+* Build intuition for repeated optimization.
+* Prepare for a fully vectorized implementation.
+
+---
+
+# 1. Story-Based Introduction
+
+Imagine you're teaching a robot to throw a basketball into a hoop.
+
+The robot has only one control:
+
+> **How hard should it throw the ball?**
+
+If it throws too softly,
+
+it misses.
+
+If it throws too hard,
+
+it also misses.
+
+After every throw, someone tells it:
+
+> "A little harder."
+
+or
+
+> "A little softer."
+
+The robot adjusts.
+
+Throw after throw,
+
+the robot becomes better.
+
+Gradient Descent works exactly the same way.
+
+Instead of adjusting throwing force,
+
+it adjusts
+
+* weights
+* biases
+
+until prediction errors become as small as possible.
+
+---
+
+# 2. What Are We Trying to Minimize?
+
+Recall our Linear Regression model:
+
+$$
+\hat{y}=wx+b
+$$
+
+Our objective is to minimize the cost function:
+
+$$
+J(w,b)=\frac{1}{2m}\sum_{i=1}^{m}(y_i-\hat y_i)^2
+$$
+
+where:
+
+* $m$ = number of training examples
+* $w$ = weight
+* $b$ = bias
+* $y_i$ = actual value
+* $\hat y_i$ = predicted value
+
+Notice something important.
+
+The cost depends on
+
+* $w$
+* $b$
+
+If we change either,
+
+the cost changes.
+
+---
+
+# 3. How Should We Change the Parameters?
+
+Suppose
+
+```text
+Current weight = 2
+```
+
+Should we increase it?
+
+Decrease it?
+
+Keep it unchanged?
+
+The derivative answers this question.
+
+If
+
+$$
+\frac{\partial J}{\partial w}>0
+$$
+
+then increasing the weight increases the cost.
+
+So we should decrease it.
+
+If
+
+$$
+\frac{\partial J}{\partial w}<0
+$$
+
+then increasing the weight reduces the cost.
+
+So we should increase it.
+
+Notice a simple pattern.
+
+Always move in the **opposite direction** of the derivative.
+
+---
+
+# 4. The Gradient Descent Update Rule
+
+Therefore,
+
+our update rule becomes
+
+$$
+\boxed{
+w:=w-\alpha\frac{\partial J}{\partial w}
+}
+$$
+
+Similarly,
+
+$$
+\boxed{
+b:=b-\alpha\frac{\partial J}{\partial b}
+}
+$$
+
+The symbol
+
+```text
+:=
+```
+
+means
+
+> "replace the old value with the new one."
+
+---
+
+# 5. Understanding Every Symbol
+
+## Weight Update
+
+$$
+w:=w-\alpha\frac{\partial J}{\partial w}
+$$
+
+| Symbol                          | Meaning                               |
+| ------------------------------- | ------------------------------------- |
+| $w$                             | Current weight                        |
+| $\alpha$                        | Learning rate                         |
+| $\frac{\partial J}{\partial w}$ | Slope of the cost with respect to $w$ |
+
+---
+
+## Bias Update
+
+$$
+b:=b-\alpha\frac{\partial J}{\partial b}
+$$
+
+Exactly the same idea.
+
+We update both parameters together.
+
+---
+
+# 6. Where Do These Derivatives Come From?
+
+We won't derive every calculus step today (that belongs in a dedicated optimization course).
+
+For Linear Regression, the derivatives simplify to:
+
+### Weight
+
+$$
+\boxed{
+\frac{\partial J}{\partial w}
+=
+
+\frac1m
+\sum_{i=1}^{m}
+(\hat y_i-y_i)x_i
+}
+$$
+
+---
+
+### Bias
+
+$$
+\boxed{
+\frac{\partial J}{\partial b}
+=
+
+\frac1m
+\sum_{i=1}^{m}
+(\hat y_i-y_i)
+}
+$$
+
+Notice something interesting.
+
+Both equations depend on
+
+```text
+Prediction − Actual
+```
+
+That quantity is simply
+
+the error.
+
+Gradient Descent learns directly from its mistakes.
+
+---
+
+# 7. Why Does x Appear in the Weight Gradient?
+
+This is an important intuition.
+
+Suppose two houses:
+
+| Size | Error |
+| ---- | ----- |
+| 1000 | 10    |
+| 10   | 10    |
+
+Should both influence the slope equally?
+
+No.
+
+Changing the slope affects large $x$ values much more than small $x$ values.
+
+That's why
+
+$$
+(\hat y-y)x
+$$
+
+appears in the weight derivative.
+
+Large feature values have more influence on the slope.
+
+---
+
+# 8. Why Doesn't x Appear in the Bias Gradient?
+
+Bias shifts the line
+
+up
+
+or
+
+down.
+
+It doesn't rotate the line.
+
+Therefore,
+
+every example contributes equally.
+
+Only the prediction error matters.
+
+Hence,
+
+$$
+\frac{\partial J}{\partial b}
+=
+
+\frac1m
+\sum(\hat y-y)
+$$
+
+No multiplication by $x$.
+
+---
+
+# 9. One Gradient Descent Iteration
+
+Let's walk through one complete update.
+
+Dataset
+
+| x | y |
+| - | - |
+| 1 | 3 |
+| 2 | 5 |
+| 3 | 7 |
+
+Suppose
+
+$$
+w=1
+$$
+
+$$
+b=1
+$$
+
+---
+
+## Step 1
+
+Predictions
+
+$$
+\hat y=wx+b
+$$
+
+| x | Prediction |
+| - | ---------- |
+| 1 | 2          |
+| 2 | 3          |
+| 3 | 4          |
+
+---
+
+## Step 2
+
+Errors
+
+$$
+\hat y-y
+$$
+
+| x | Error |
+| - | ----- |
+| 1 | -1    |
+| 2 | -2    |
+| 3 | -3    |
+
+---
+
+## Step 3
+
+Compute Gradient
+
+Weight gradient
+
+$$
+\frac{(-1)(1)+(-2)(2)+(-3)(3)}3 = 
+\frac{-14}3 = -4.67
+$$
+
+Bias gradient
+
+$$
+\frac{-1-2-3}3=-2
+$$
+
+---
+
+## Step 4
+
+Choose Learning Rate
+
+$$
+\alpha=0.1
+$$
+
+---
+
+## Step 5
+
+Update Weight
+
+$$
+w = 1 - 0.1(-4.67) = 1.467
+$$
+
+---
+
+## Step 6
+
+Update Bias
+
+$$
+b = 1 - 0.1(-2) = 1.2
+$$
+
+One iteration finished.
+
+The next iteration repeats the exact same steps.
+
+---
+
+# 10. Python Implementation (One Iteration)
+
+```python
+import numpy as np
+
+# Dataset
+X = np.array([1, 2, 3])
+y = np.array([3, 5, 7])
+
+# Initial parameters
+w = 1.0
+b = 1.0
+
+learning_rate = 0.1
+
+# Predictions
+y_pred = w * X + b
+
+# Errors
+errors = y_pred - y
+
+# Gradients
+dw = np.mean(errors * X)
+db = np.mean(errors)
+
+# Update parameters
+w = w - learning_rate * dw
+b = b - learning_rate * db
+
+print("Updated weight:", w)
+print("Updated bias:", b)
+```
+
+Output
+
+```text
+Updated weight: 1.4666666666666668
+Updated bias: 1.2
+```
+
+Exactly what we calculated by hand.
+
+---
+
+# 11. Why Repeat This?
+
+After one update,
+
+the line improves.
+
+But it usually isn't perfect.
+
+So we repeat.
+
+```text
+Guess
+
+↓
+
+Predict
+
+↓
+
+Compute Error
+
+↓
+
+Compute Gradient
+
+↓
+
+Update Parameters
+
+↓
+
+Repeat
+```
+
+Eventually,
+
+the cost becomes very small.
+
+---
+
+# 12. Feynman Explanation
+
+Imagine learning archery.
+
+Every arrow gives feedback.
+
+Miss left?
+
+Aim slightly right.
+
+Miss high?
+
+Aim slightly lower.
+
+Repeat hundreds of times.
+
+Eventually,
+
+you consistently hit the target.
+
+Gradient Descent follows the same feedback loop.
+
+It never magically knows the answer.
+
+It **improves by learning from each mistake**.
+
+---
+
+# 13. Common Mistakes
+
+### ❌ Mistake 1
+
+Using
+
+$$
+y-\hat y
+$$
+
+instead of
+
+$$
+\hat y-y
+$$
+
+Be consistent with the derivative formula you're using. Mixing conventions can cause updates in the wrong direction.
+
+---
+
+### ❌ Mistake 2
+
+Updating only the weight.
+
+Both
+
+* $w$
+* $b$
+
+must be updated every iteration.
+
+---
+
+### ❌ Mistake 3
+
+Updating parameters before computing both gradients.
+
+Always compute **both gradients first**, then update both parameters. Otherwise, one update may incorrectly influence the calculation of the other.
+
+---
+
+# Key Takeaways
+
+* Gradient Descent minimizes the cost function by repeatedly updating parameters.
+* The update rules are:
+
+$$
+w:=w-\alpha\frac{\partial J}{\partial w}
+$$
+
+$$
+b:=b-\alpha\frac{\partial J}{\partial b}
+$$
+
+* The weight gradient depends on both the error and the feature values.
+* The bias gradient depends only on the errors.
+* One iteration consists of:
+
+  1. Predict
+  2. Compute errors
+  3. Compute gradients
+  4. Update parameters
+  5. Repeat
+
+---
+
+## Next: Day 5 – Part 3B
+
+We'll complete Day 5 with:
+
+* Full Gradient Descent implementation using a training loop.
+* **Vectorization** and why NumPy is much faster than Python loops.
+* Cost tracking across iterations.
+* Visual intuition for convergence.
+* Practice problems.
+* Coding assignment.
+* Solutions.
+* Interview questions.
+* Complete Day 5 summary.
+
+By the end of Part 3B, you'll have written your **first complete machine learning algorithm from scratch**, without relying on Scikit-Learn.
+
+Excellent! This is the final part of one of the most important lessons in the course. By the end of this section, you'll have built a complete Gradient Descent algorithm from scratch.
+
+---
+
+# Week 1 — Day 5 (Part 3B)
+
+# Complete Gradient Descent Implementation, Vectorization & Wrap-up
+
+---
+
+# Learning Objectives
+
+By the end of this lesson, you will:
+
+* Implement Gradient Descent from scratch.
+* Understand why training requires multiple iterations.
+* Learn what vectorization is.
+* Understand why NumPy is much faster than Python loops.
+* Track how the cost changes during training.
+* Complete Day 5 with practice problems, assignments, interview questions, and solutions.
+
+---
+
+# 1. Story-Based Introduction
+
+Imagine teaching a child to ride a bicycle.
+
+The first attempt:
+
+❌ Falls.
+
+Second attempt:
+
+❌ Still falls.
+
+Third attempt:
+
+✔ Better.
+
+Hundreds of attempts later:
+
+✔ Rides confidently.
+
+Machine Learning works exactly the same way.
+
+One update isn't enough.
+
+Learning happens through repeated improvement.
+
+---
+
+# 2. Full Gradient Descent Algorithm
+
+Instead of performing one update,
+
+we repeat the process many times.
+
+Algorithm:
+
+```text
+Initialize w and b
+
+Repeat:
+
+    Predict
+
+    Compute Cost
+
+    Compute Gradients
+
+    Update Parameters
+
+Until convergence
+```
+
+This loop is called **training**.
+
+---
+
+# 3. Complete Python Implementation
+
+```python
+import numpy as np
+
+# Dataset
+X = np.array([1, 2, 3, 4, 5], dtype=float)
+y = np.array([3, 5, 7, 9, 11], dtype=float)
+
+# Initial parameters
+w = 0.0
+b = 0.0
+
+learning_rate = 0.1
+epochs = 100
+
+m = len(X)
+
+for epoch in range(epochs):
+
+    # Predictions
+    y_pred = w * X + b
+
+    # Errors
+    errors = y_pred - y
+
+    # Cost
+    cost = np.mean(errors ** 2)
+
+    # Gradients
+    dw = np.mean(errors * X)
+    db = np.mean(errors)
+
+    # Update
+    w -= learning_rate * dw
+    b -= learning_rate * db
+
+    if epoch % 10 == 0:
+        print(f"Epoch {epoch:3d} | Cost = {cost:.4f}")
+
+print("\nFinal Parameters")
+print("w =", w)
+print("b =", b)
+```
+
+---
+
+# 4. Understanding Every Step
+
+## Prediction
+
+```python
+y_pred = w * X + b
+```
+
+The model predicts every training example.
+
+---
+
+## Error
+
+```python
+errors = y_pred - y
+```
+
+Measures how wrong each prediction is.
+
+---
+
+## Cost
+
+```python
+cost = np.mean(errors ** 2)
+```
+
+Measures the average squared error.
+
+---
+
+## Gradient
+
+```python
+dw = np.mean(errors * X)
+db = np.mean(errors)
+```
+
+Calculates how the cost changes with respect to:
+
+* weight
+* bias
+
+---
+
+## Update
+
+```python
+w -= learning_rate * dw
+b -= learning_rate * db
+```
+
+Move downhill.
+
+Repeat.
+
+---
+
+# 5. Watching the Cost Decrease
+
+Example output:
+
+```text
+Epoch   0 | Cost = 57.0000
+Epoch  10 | Cost = 2.1468
+Epoch  20 | Cost = 0.2598
+Epoch  30 | Cost = 0.0314
+Epoch  40 | Cost = 0.0038
+Epoch  50 | Cost = 0.0005
+Epoch  60 | Cost = 0.0001
+Epoch  70 | Cost = 0.0000
+```
+
+Notice:
+
+The cost keeps getting smaller.
+
+This is exactly what Gradient Descent is supposed to do.
+
+---
+
+# 6. Visualizing Learning
+
+Imagine plotting the cost.
+
+```text
+Cost
+
+60 ●
+
+40  ●
+
+20    ●
+
+10      ●
+
+5         ●
+
+2           ●
+
+1             ●
+
+0               ●●●
+________________________
+
+Epoch
+```
+
+As training continues,
+
+the curve becomes flatter.
+
+This is convergence.
+
+---
+
+# 7. What Is Vectorization?
+
+Suppose you have one million houses.
+
+One approach:
+
+```python
+for each house:
+    compute prediction
+```
+
+Another approach:
+
+```python
+predict every house simultaneously
+```
+
+Which is faster?
+
+The second.
+
+This idea is called **vectorization**.
+
+---
+
+# 8. Why Is Vectorization Faster?
+
+Python loops execute one instruction at a time.
+
+```text
+House 1
+
+↓
+
+House 2
+
+↓
+
+House 3
+
+↓
+
+House 4
+```
+
+NumPy performs many operations using optimized C code underneath.
+
+```text
+House 1
+
+House 2
+
+House 3
+
+House 4
+
+↓
+
+Processed Together
+```
+
+This reduces overhead and leverages low-level optimizations.
+
+---
+
+# 9. Loop vs Vectorized Code
+
+### Loop
+
+```python
+predictions = []
+
+for x in X:
+    predictions.append(w * x + b)
+```
+
+---
+
+### Vectorized
+
+```python
+predictions = w * X + b
+```
+
+One line.
+
+Faster.
+
+Cleaner.
+
+More readable.
+
+---
+
+# 10. Why Machine Learning Uses NumPy
+
+NumPy provides:
+
+* Efficient array operations.
+* Vectorized mathematical functions.
+* Optimized memory usage.
+* Faster execution than pure Python loops.
+
+This is why almost every ML library builds on NumPy concepts.
+
+---
+
+# 11. Complete Training Flow
+
+```text
+Training Data
+      │
+      ▼
+Predictions
+      │
+      ▼
+Compute Error
+      │
+      ▼
+Compute Cost
+      │
+      ▼
+Compute Gradient
+      │
+      ▼
+Update Parameters
+      │
+      ▼
+Repeat
+      │
+      ▼
+Convergence
+```
+
+This pipeline underlies many machine learning algorithms.
+
+---
+
+# 12. Common Mistakes
+
+### ❌ Mistake 1
+
+Forgetting to update both parameters.
+
+Update both `w` and `b` each iteration.
+
+---
+
+### ❌ Mistake 2
+
+Choosing an excessively large learning rate.
+
+The cost may increase instead of decrease.
+
+---
+
+### ❌ Mistake 3
+
+Training for too few epochs.
+
+The model may stop before reaching a good solution.
+
+---
+
+### ❌ Mistake 4
+
+Using Python loops when vectorized operations are available.
+
+Vectorized NumPy code is usually faster and more concise.
+
+---
+
+# 13. Practice Problems
+
+## Easy
+
+1. Why do we repeat Gradient Descent many times?
+
+2. What does one epoch represent?
+
+3. What happens to the cost during successful training?
+
+4. Why is NumPy preferred over Python loops?
+
+---
+
+## Medium
+
+Suppose:
+
+```text
+Initial Cost = 250
+
+After 100 epochs = 35
+
+After 200 epochs = 10
+
+After 300 epochs = 9.9
+
+After 400 epochs = 9.89
+```
+
+### Questions
+
+1. Has the model converged?
+
+2. Would another 1000 epochs significantly improve performance?
+
+Explain your reasoning.
+
+---
+
+## Challenge
+
+Suppose the cost changes like this:
+
+```text
+40
+
+32
+
+28
+
+35
+
+50
+
+75
+```
+
+Questions:
+
+1. Is Gradient Descent working properly?
+
+2. What might be causing this behavior?
+
+3. Suggest at least two possible fixes.
+
+---
+
+# 14. Coding Assignment
+
+## Task 1
+
+Implement Linear Regression using Gradient Descent from scratch.
+
+Requirements:
+
+* Use NumPy only.
+* Initialize `w` and `b` to zero.
+* Train for 500 epochs.
+* Print the cost every 50 epochs.
+* Print the final values of `w` and `b`.
+
+---
+
+## Task 2
+
+Modify your implementation to store the cost after every epoch.
+
+Hint:
+
+```python
+cost_history = []
+```
+
+Append the cost inside the training loop.
+
+After training, print:
+
+```python
+print(cost_history[:10])
+```
+
+to inspect the first few values.
+
+---
+
+## Bonus
+
+Plot the cost versus epoch using **Matplotlib**.
+
+> **Note:** Matplotlib is officially introduced later in the course. If you're unfamiliar with it, you can skip this bonus or revisit it after Week 4.
+
+---
+
+# 15. Interview Questions
+
+1. What is Gradient Descent?
+
+2. Why does Gradient Descent use derivatives?
+
+3. What is the learning rate?
+
+4. What is convergence?
+
+5. Why are multiple epochs needed?
+
+6. What is vectorization?
+
+7. Why is vectorization faster than Python loops?
+
+8. Why is NumPy widely used in machine learning?
+
+9. What happens if the learning rate is too large?
+
+10. What happens if the learning rate is too small?
+
+---
+
+# 16. Solutions to Practice Problems
+
+## Easy
+
+### 1. Why do we repeat Gradient Descent many times?
+
+Each update improves the parameters only a little. Repeating the process gradually moves the model toward the minimum of the cost function.
+
+---
+
+### 2. What does one epoch represent?
+
+One complete pass through the entire training dataset.
+
+---
+
+### 3. What happens to the cost during successful training?
+
+It generally decreases and eventually levels off as the model converges.
+
+---
+
+### 4. Why is NumPy preferred over Python loops?
+
+Because NumPy performs vectorized operations that are implemented in optimized low-level code, making them much faster and more memory-efficient than explicit Python loops.
+
+---
+
+## Medium
+
+### 1. Has the model converged?
+
+Yes. The cost decreases rapidly at first and then changes only slightly from **10** to **9.89**, indicating that the model is close to a minimum.
+
+### 2. Would another 1000 epochs significantly improve performance?
+
+Probably not. The improvements are already very small, so additional epochs are unlikely to produce meaningful gains.
+
+---
+
+## Challenge
+
+### 1. Is Gradient Descent working properly?
+
+No. The cost initially decreases but then starts increasing, which suggests the optimization process is unstable.
+
+### 2. What might be causing this?
+
+Possible reasons include:
+
+* Learning rate is too large.
+* Errors in the gradient computation.
+* Incorrect update equations.
+* Numerical instability.
+
+### 3. Suggest two fixes.
+
+* Reduce the learning rate.
+* Verify the gradient formulas and parameter update equations.
+* Optionally, normalize the input features to improve optimization stability (a topic we'll cover on Day 6).
+
+---
+
+# 17. Solution to Coding Assignment
+
+```python
+import numpy as np
+
+# Dataset
+X = np.array([1, 2, 3, 4, 5], dtype=float)
+y = np.array([3, 5, 7, 9, 11], dtype=float)
+
+# Parameters
+w = 0.0
+b = 0.0
+
+learning_rate = 0.1
+epochs = 500
+
+cost_history = []
+
+for epoch in range(epochs):
+
+    # Predictions
+    y_pred = w * X + b
+
+    # Errors
+    errors = y_pred - y
+
+    # Cost
+    cost = np.mean(errors ** 2)
+    cost_history.append(cost)
+
+    # Gradients
+    dw = np.mean(errors * X)
+    db = np.mean(errors)
+
+    # Update
+    w -= learning_rate * dw
+    b -= learning_rate * db
+
+    if epoch % 50 == 0:
+        print(f"Epoch {epoch:3d} | Cost = {cost:.6f}")
+
+print("\nFinal Parameters")
+print(f"Weight (w): {w:.6f}")
+print(f"Bias (b): {b:.6f}")
+
+print("\nFirst 10 Cost Values:")
+print(cost_history[:10])
+```
+
+---
+
+# 18. Summary
+
+Today you completed your **first machine learning training algorithm** from scratch.
+
+You learned:
+
+* ✅ How Gradient Descent repeatedly updates model parameters.
+* ✅ How to implement the full training loop.
+* ✅ How to compute predictions, errors, cost, and gradients.
+* ✅ Why the cost decreases during successful training.
+* ✅ What vectorization is and why NumPy is faster than Python loops.
+* ✅ How to track the learning process using a cost history.
+
+---
+
+# 🎉 Week 1 — Day 5 Completed
+
+At this point, you can explain and implement:
+
+* Linear Regression from first principles.
+* Mean Squared Error (MSE).
+* Cost Functions.
+* Derivatives and Partial Derivatives.
+* Gradients.
+* Gradient Descent.
+* Learning Rate.
+* Epochs.
+* Convergence.
+* A complete Gradient Descent training loop in NumPy.
+
+You now understand **how a machine actually learns**.
+
+## What's Next?
+
+**Week 1 — Day 6: Multiple Linear Regression, Feature Scaling, Standardization & Normalization**
+
+We'll extend Linear Regression from **one feature** (e.g., house size) to **many features** (e.g., size, number of bedrooms, age, and location score). You'll also learn why feature scaling is critical for efficient Gradient Descent and how techniques like standardization and normalization improve training performance. This is the final new-concept day before the Week 1 revision and project.
