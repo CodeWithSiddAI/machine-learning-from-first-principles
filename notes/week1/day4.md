@@ -518,12 +518,12 @@ $$
 
 Expand the square.
 
-[
+$$
 (x+h)^2
-=======
+=
 
 x^2+2xh+h^2
-]
+$$
 
 Substitute:
 
@@ -646,9 +646,9 @@ Graph:
 
 Slope:
 
-[
+$$
 0
-]
+$$
 
 Therefore:
 
