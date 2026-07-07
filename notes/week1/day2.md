@@ -3398,9 +3398,7 @@ Suppose
 $$
 \mathbf{x} =
 \begin{bmatrix}
-70\
-80\
-90
+70\ 80\ 90
 \end{bmatrix}
 $$
 
@@ -3414,22 +3412,11 @@ Mathematically, NumPy behaves as though we had written
 
 $$
 \begin{bmatrix}
-70\
-80\
-90
-\end{bmatrix}
-+
-\begin{bmatrix}
-5\
-5\
-5
-\end{bmatrix}
-=============
-
-\begin{bmatrix}
-75\
-85\
-95
+70\ 80\ 90
+\end{bmatrix}+\begin{bmatrix}
+5\ 5\ 5
+\end{bmatrix} = \begin{bmatrix}
+75\ 85\ 95
 \end{bmatrix}
 $$
 
