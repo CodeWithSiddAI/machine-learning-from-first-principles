@@ -1138,15 +1138,7 @@ These numbers are **not comparable**.
 Recall the hypothesis:
 
 $$
-\hat y
-=
-w_1x_1
-+
-w_2x_2
-+
-w_3x_3
-+
-b
+\hat y = w_1x_1 + w_2x_2 + w_3x_3 + b
 $$
 
 Suppose
@@ -1773,10 +1765,8 @@ The formula is:
 
 $$
 \boxed{
-x_{\text{scaled}}
-=
-\frac{x-x_{\min}}
-{x_{\max}-x_{\min}}
+x_{\text{scaled}} =
+\frac{x-x_{\min}}{x_{\max}-x_{\min}}
 }
 $$
 
@@ -1816,12 +1806,8 @@ $$
 Substitute into the formula:
 
 $$
-\frac{2000-1000}
-{3000-1000}
-=
-\frac{1000}{2000}
-=
-0.5
+\frac{2000-1000}{3000-1000} =
+\frac{1000}{2000} = 0.5
 $$
 
 So,
@@ -1847,13 +1833,8 @@ $$
 Normalize it.
 
 $$
-\frac{2500-1000}
-{3000-1000}
-=
-
-\frac{1500}{2000}
-=
-0.75
+\frac{2500-1000}{3000-1000} =
+\frac{1500}{2000} = 0.75
 $$
 
 ---
@@ -1961,9 +1942,7 @@ Suppose we have:
 Average:
 
 $$
-\frac{10+20+30+40+50}{5}
-=
-30
+\frac{10+20+30+40+50}{5} = 30
 $$
 
 The mean is:
@@ -2014,11 +1993,7 @@ The formula is:
 
 $$
 \boxed{
-z
-=
-
-\frac{x-\mu}
-{\sigma}
+z = \frac{x-\mu}{\sigma}
 }
 $$
 
@@ -2060,14 +2035,7 @@ $$
 Then
 
 $$
-z
-=
-
-\frac{70-50}
-{10}
-=
-
-2
+z = \frac{70-50}{10} = 2
 $$
 
 Interpretation:
@@ -2087,10 +2055,7 @@ $$
 Then
 
 $$
-\frac{40-50}
-{10}
-=
--1
+\frac{40-50}{10} = -1
 $$
 
 Meaning:
@@ -2352,11 +2317,8 @@ $$
 we get:
 
 $$
-\frac{220-100}{300-100}
-=
-\frac{120}{200}
-=
-0.6
+\frac{220-100}{300-100} =
+\frac{120}{200} = 0.6
 $$
 
 **Answer:** 0.6
@@ -2380,12 +2342,8 @@ $$
 we get:
 
 $$
-\frac{65-50}{5}
-=
-
-\frac{15}{5}
-=
-3
+\frac{65-50}{5} =
+\frac{15}{5} = 3
 $$
 
 **Answer:** 3
@@ -2662,10 +2620,8 @@ Let's understand this equation.
 Recall the formula
 
 $$
-\frac{\partial J}{\partial w_j}
-===============================
-
-\frac1m
+\frac{\partial J}{\partial w_j} = 
+\frac{1}{m}
 \sum
 (\hat y-y)x_j
 $$
