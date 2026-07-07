@@ -1720,16 +1720,13 @@ Vectors can only be added if they have the **same number of components**.
 Suppose every student's marks are doubled.
 
 $$
-2\begin{bmatrix}
+2 \begin{bmatrix}
 70 \\
 80 \\
 90
-\end{bmatrix}
-=
-
-\begin{bmatrix}
-140 \
-160 \
+\end{bmatrix} = \begin{bmatrix}
+140 \\
+160 \\
 180
 \end{bmatrix}
 $$
@@ -2069,9 +2066,7 @@ For example:
 $$
 \mathbf{x} =
 \begin{bmatrix}
-8 \
-95 \
-12
+8 & 95 & 12
 \end{bmatrix}
 $$
 
@@ -2090,9 +2085,9 @@ Instead, we stack them together.
 $$
 X =
 \begin{bmatrix}
-8 & 95 & 12 \
-6 & 88 & 10 \
-9 & 97 & 15 \
+8 & 95 & 12 \\
+6 & 88 & 10 \\
+9 & 97 & 15 \\
 7 & 91 & 13
 \end{bmatrix}
 $$
@@ -2130,8 +2125,8 @@ We organize everything into one structure:
 $$
 X =
 \begin{bmatrix}
-1800 & 3 & 2 & 8 & 5 \
-2200 & 4 & 3 & 2 & 7 \
+1800 & 3 & 2 & 8 & 5 \\
+2200 & 4 & 3 & 2 & 7 \\
 1500 & 2 & 2 & 15 & 3
 \end{bmatrix}
 $$
@@ -2214,7 +2209,7 @@ For example:
 $$
 X =
 \begin{bmatrix}
-1 & 2 & 3 \
+1 & 2 & 3 \\
 4 & 5 & 6
 \end{bmatrix}
 $$
@@ -2239,8 +2234,8 @@ Suppose we have:
 $$
 A =
 \begin{bmatrix}
-3 & 7 \
-5 & 9 \
+3 & 7 \\
+5 & 9 \\
 2 & 8
 \end{bmatrix}
 $$
@@ -2277,8 +2272,8 @@ Consider:
 $$
 X =
 \begin{bmatrix}
-170 & 65 & 21 \
-180 & 75 & 24 \
+170 & 65 & 21 \\
+180 & 75 & 24 \\
 160 & 55 & 20
 \end{bmatrix}
 $$
@@ -2338,8 +2333,8 @@ The **feature matrix** is:
 $$
 X =
 \begin{bmatrix}
-1200 & 2 \
-1800 & 3 \
+1200 & 2 \\
+1800 & 3 \\
 2400 & 4
 \end{bmatrix}
 $$
@@ -2349,9 +2344,7 @@ The **target vector** is:
 $$
 y =
 \begin{bmatrix}
-45 \
-72 \
-105
+45 & 72 & 105 
 \end{bmatrix}
 $$
 
@@ -2370,7 +2363,7 @@ Matrix:
 $$
 A =
 \begin{bmatrix}
-1 & 2 \
+1 & 2 \\
 3 & 4
 \end{bmatrix}
 $$
@@ -2390,7 +2383,7 @@ Matrix:
 $$
 B =
 \begin{bmatrix}
-5 & 8 & 1 \
+5 & 8 & 1 \\
 9 & 4 & 7
 \end{bmatrix}
 $$
@@ -2533,8 +2526,7 @@ NumPy adds corresponding elements.
 
 $$
 \begin{bmatrix}
-1 & 2 & 3 \
-4 & 5 & 6
+1 & 2 & 3 & 4 & 5 & 6
 \end{bmatrix}
 $$
 
@@ -2775,22 +2767,16 @@ Suppose we have:
 Student features:
 
 $$
-\mathbf{x} =
-\begin{bmatrix}
-8 \
-95 \
-12
+\mathbf{x} = \begin{bmatrix}
+8 \ 95 \ 12
 \end{bmatrix}
 $$
 
 Model weights:
 
 $$
-\mathbf{w} =
-\begin{bmatrix}
-4 \
-0.3 \
-2
+\mathbf{w} = \begin{bmatrix}
+4 \ 0.3 \ 2
 \end{bmatrix}
 $$
 
@@ -2836,9 +2822,7 @@ Suppose
 $$
 \mathbf{x} =
 \begin{bmatrix}
-x_1 \
-x_2 \
-x_3
+x_1 \ x_2 \ x_3
 \end{bmatrix}
 $$
 
@@ -2847,19 +2831,14 @@ and
 $$
 \mathbf{w} =
 \begin{bmatrix}
-w_1 \
-w_2 \
-w_3
+w_1 \ w_2 \ w_3
 \end{bmatrix}
 $$
 
 Their dot product is
 
 $$
-\mathbf{x}\cdot\mathbf{w}
-=========================
-
-x_1w_1+x_2w_2+x_3w_3
+\mathbf{x} \cdot \mathbf{w} = x_1w_1+x_2w_2+x_3w_3
 $$
 
 ### What do the symbols mean?
@@ -2880,9 +2859,7 @@ Student:
 $$
 \mathbf{x} =
 \begin{bmatrix}
-8 \
-95 \
-12
+8 \ 95 \ 12
 \end{bmatrix}
 $$
 
@@ -2891,9 +2868,7 @@ Weights:
 $$
 \mathbf{w} =
 \begin{bmatrix}
-4 \
-0.3 \
-2
+4 \ 0.3 \ 2
 \end{bmatrix}
 $$
 
@@ -2934,18 +2909,14 @@ $$
 $$
 \mathbf{a}=
 \begin{bmatrix}
-2\
-3\
-4
+2\ 3\ 4
 \end{bmatrix}
 $$
 
 $$
 \mathbf{b}=
 \begin{bmatrix}
-5\
-6\
-7
+5\ 6\ 7
 \end{bmatrix}
 $$
 
@@ -3003,9 +2974,7 @@ and
 $$
 w=
 \begin{bmatrix}
-4\
-0.3\
-2
+4\ 0.3\ 2
 \end{bmatrix}
 $$
 
@@ -3087,15 +3056,9 @@ Both approaches produce the same result for 1D vectors.
 
 $$
 \begin{bmatrix}
-1\
-2\
-3
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-4\
-5\
-6
+1\ 2\ 3
+\end{bmatrix} \cdot \begin{bmatrix}
+4\ 5\ 6
 \end{bmatrix}
 $$
 
@@ -3111,15 +3074,9 @@ $$
 
 $$
 \begin{bmatrix}
-5\
-2\
-7
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-3\
-4\
-1
+5\ 2\ 7
+\end{bmatrix} \cdot \begin{bmatrix}
+3\ 4\ 1
 \end{bmatrix}
 $$
 
@@ -3149,11 +3106,8 @@ np.dot(x, w)
 A house is described by the feature vector:
 
 $$
-\mathbf{x}=
-\begin{bmatrix}
-2000\
-3\
-10
+\mathbf{x} = \begin{bmatrix}
+2000\ 3\ 10
 \end{bmatrix}
 $$
 
@@ -3166,11 +3120,8 @@ where the features are:
 The model has learned the weights:
 
 $$
-\mathbf{w}=
-\begin{bmatrix}
-120\
-15000\
--2000
+\mathbf{w} = \begin{bmatrix}
+120\ 15000\ -2000
 \end{bmatrix}
 $$
 
