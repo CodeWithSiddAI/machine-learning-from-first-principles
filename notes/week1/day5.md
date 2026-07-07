@@ -1191,9 +1191,7 @@ Notice how the updates become smaller as the gradient decreases, illustrating th
 
 This coding exercise isn't a full Gradient Descent implementation yet. Its purpose is to help you understand the **update rule** itself:
 
-$
-\text{New Parameter} = \text{Old Parameter} - \text{Learning Rate} \times \text{Gradient}
-$
+$\text{New Parameter} = \text{Old Parameter} - \text{Learning Rate} \times \text{Gradient}$
 
 
 

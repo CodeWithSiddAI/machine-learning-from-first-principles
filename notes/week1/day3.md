@@ -271,9 +271,9 @@ In machine learning, the model's prediction is called the **hypothesis**.
 
 We write it as:
 
-[
+$$
 \hat{y} = h(x)
-]
+$$
 
 Read as:
 
@@ -281,10 +281,10 @@ Read as:
 
 Here:
 
-* (x) = input feature
-* (h(x)) = prediction made by the model
+* $x$ = input feature
+* $h(x)$ = prediction made by the model
 * (\hat{y}) ("y-hat") = predicted value
-* (y) = actual value
+* $y$ = actual value
 
 The hat (^) indicates an estimate rather than the true value.
 
@@ -294,15 +294,11 @@ The hat (^) indicates an estimate rather than the true value.
 
 For a straight line, the hypothesis is:
 
-[
-\hat{y} = mx + c
-]
+$$\hat{y} = mx + c$$
 
 In machine learning, we usually write it as:
 
-[
-\hat{y} = w x + b
-]
+$$\hat{y} = w x + b$$
 
 Where:
 
@@ -354,9 +350,7 @@ That's Linear Regression in its simplest form.
 * The model's prediction is called the **hypothesis**.
 * The hypothesis for a straight line is:
 
-[
-\hat{y} = wx + b
-]
+$$\hat{y} = wx + b$$
 
 * The challenge now is to determine the **best values of (w) and (b)**.
 
@@ -391,9 +385,7 @@ Let's go back to our real estate company.
 
 Suppose your first prediction model is:
 
-[
-\hat{y} = 0.1x + 80
-]
+$$\hat{y} = 0.1x + 80$$
 
 Now let's test it.
 
@@ -449,14 +441,12 @@ The goal of training is simply:
 
 Every prediction has two values:
 
-* Actual value ((y))
-* Predicted value ((\hat{y}))
+* Actual value $y$
+* Predicted value $\hat{y}$
 
 The difference is called the **error** (also called the **residual**).
 
-[
-\text{Error} = y - \hat{y}
-]
+$$\text{Error} = y - \hat{y}$$
 
 Example:
 
@@ -511,9 +501,9 @@ So simply adding errors doesn't work.
 
 One idea is:
 
-[
-|y-\hat{y}|
-]
+
+$$|y-\hat{y}|$$
+
 
 Now:
 
@@ -538,9 +528,9 @@ So while **Mean Absolute Error (MAE)** is useful, Linear Regression is tradition
 
 Instead of taking the absolute value, square the error.
 
-[
-(y-\hat{y})^2
-]
+
+
+$$(y-\hat{y})^2$$
 
 Example:
 
@@ -653,9 +643,7 @@ For each example:
 
 This gives the **Mean Squared Error (MSE)**:
 
-[
-\boxed{\text{MSE}=\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2}
-]
+$$\boxed{\text{MSE}=\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2}$$
 
 ---
 
@@ -663,18 +651,16 @@ This gives the **Mean Squared Error (MSE)**:
 
 Let's break the formula down:
 
-[
-\text{MSE}=\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
-]
+$$\text{MSE}=\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2$$
 
 | Symbol              | Meaning                               |
 | ------------------- | ------------------------------------- |
-| (n)                 | Number of training examples           |
-| (\sum)              | Sum all values                        |
-| (i)                 | Index of each training example        |
-| (y_i)               | Actual value of the (i)-th example    |
-| (\hat{y}_i)         | Predicted value of the (i)-th example |
-| ((y_i-\hat{y}_i)^2) | Squared error for one example         |
+| $n$                 | Number of training examples           |
+| $\sum$              | Sum all values                        |
+| $i$                 | Index of each training example        |
+| $y_i$               | Actual value of the (i)-th example    |
+| $\hat{y}_i$         | Predicted value of the (i)-th example |
+| $(y_i-\hat{y}_i)^2$ | Squared error for one example         |
 
 The **Mean** means average, and **Squared Error** means each error is squared before averaging.
 
@@ -684,31 +670,22 @@ The **Mean** means average, and **Squared Error** means each error is squared be
 
 In machine learning, we usually denote the cost function by:
 
-[
-J(w,b)
-]
+$$J(w,b)$$
 
 This reminds us that the cost depends on the parameters **(w)** (weight) and **(b)** (bias).
 
 For Linear Regression, the cost function is:
 
-[
-\boxed{
-J(w,b)=\frac{1}{2n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
-}
-]
+$$\boxed{
+J(w,b)=\frac{1}{2n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2}$$
 
 You might notice something new:
 
-[
-\frac{1}{2n}
-]
+$$\frac{1}{2n}$$
 
 instead of
 
-[
-\frac{1}{n}
-]
+$$\frac{1}{n}$$
 
 Why divide by **2**?
 
@@ -722,7 +699,7 @@ You can think of it as a mathematical convenience.
 
 Suppose we have three houses.
 
-| House | Actual ((y)) | Predicted ((\hat{y})) |
+| House | Actual ($y$) | Predicted ($\hat{y}$) |
 | ----: | -----------: | --------------------: |
 |     1 |          200 |                   190 |
 |     2 |          250 |                   260 |
@@ -746,21 +723,17 @@ Suppose we have three houses.
 
 ### Step 3: Add Them
 
-[
+$$
 100+100+100=300
-]
+$$
 
 ### Step 4: Divide by the Number of Examples
 
-[
-\text{MSE}=\frac{300}{3}=100
-]
+$$\text{MSE}=\frac{300}{3}=100$$
 
 If using the Linear Regression cost function:
 
-[
-J=\frac{300}{2\times3}=50
-]
+$$J=\frac{300}{2\times3}=50$$
 
 The absolute value isn't important by itself. What matters is that **lower cost indicates a better model**.
 
@@ -788,7 +761,7 @@ Your goal is to adjust your aim until this average distance is as small as possi
 * Squaring errors ensures they are always positive and emphasizes larger mistakes.
 * **MSE** is the average of all squared errors.
 * The **Cost Function** measures how well our model performs.
-* Training a Linear Regression model is essentially the process of finding the values of **(w)** and **(b)** that minimize this cost.
+* Training a Linear Regression model is essentially the process of finding the values of **($w$)** and **($b$)** that minimize this cost.
 
 ---
 
@@ -841,9 +814,7 @@ Here:
 
 Suppose we **guess**:
 
-[
-w = 0.15,\qquad b = 20
-]
+$$w = 0.15,\qquad b = 20$$
 
 ```python
 w = 0.15
@@ -861,9 +832,7 @@ Remember:
 
 The hypothesis is:
 
-[
-\hat{y}=wx+b
-]
+$$\hat{y}=wx+b$$
 
 In Python:
 
@@ -1120,19 +1089,17 @@ It computes the optimal weights in one calculation (for suitable datasets).
 
 The formula is:
 
-[
-\boxed{\theta=(X^TX)^{-1}X^Ty}
-]
+$$\boxed{\theta=(X^TX)^{-1}X^Ty}$$
 
 Don't worry if this looks intimidating—we're focusing on intuition today.
 
 Where:
 
-* (X) = Design matrix (all features)
-* (X^T) = Transpose of (X)
-* ((X^TX)^{-1}) = Matrix inverse
-* (y) = Target values
-* (\theta) = Parameters (weights and bias)
+* $X$ = Design matrix (all features)
+* $X^T$ = Transpose of (X)
+* $(X^TX)^{-1}$ = Matrix inverse
+* $y$ = Target values
+* $\theta$ = Parameters (weights and bias)
 
 ---
 
@@ -1210,7 +1177,7 @@ What ultimately matters is how well the model generalizes to new data, which we'
 
 2. What type of output does it predict?
 
-3. What is the difference between (y) and (\hat{y})?
+3. What is the difference between $y$ and $\hat{y}$?
 
 4. Why do we square the errors?
 
@@ -1262,9 +1229,7 @@ linear_regression_predict(X, w, b)
 
 that returns:
 
-[
-\hat{y}=wX+b
-]
+$$\hat{y}=wX+b$$
 
 Then write another function:
 
@@ -1325,7 +1290,7 @@ If you can explain these ideas in your own words, you've understood the core con
 
 2. It predicts **continuous values**, such as prices, temperatures, or salaries.
 
-3. (y) is the **actual** value, while (\hat{y}) is the **predicted** value.
+3. $y$ is the **actual** value, while $\hat{y}$ is the **predicted** value.
 
 4. We square errors to make them positive and to penalize larger mistakes more heavily.
 
@@ -1341,15 +1306,11 @@ If you can explain these ideas in your own words, you've understood the core con
 
 Total squared error:
 
-[
-100 + 100 + 25 = 225
-]
+$$100 + 100 + 25 = 225$$
 
 MSE:
 
-[
-\frac{225}{3}=75
-]
+$$\frac{225}{3}=75$$
 
 ---
 
@@ -1405,7 +1366,7 @@ Today you learned:
 
 * ✅ What **Linear Regression** is and why it exists.
 * ✅ The concepts of **features**, **targets**, **weights**, and **bias**.
-* ✅ The **hypothesis function** (\hat{y}=wx+b).
+* ✅ The **hypothesis function** $\hat{y}=wx+b$.
 * ✅ How to measure prediction quality using the **Cost Function**.
 * ✅ Why **Mean Squared Error (MSE)** is commonly used.
 * ✅ How to compute predictions and MSE from scratch in Python using NumPy.
@@ -1423,5 +1384,5 @@ We'll build the mathematical foundation needed for optimization by covering:
 * Gradients
 * Chain Rule (preview)
 
-These concepts will prepare you to fully understand **Gradient Descent** on Day 5, where you'll see how a machine automatically learns the best values of (w) and (b).
+These concepts will prepare you to fully understand **Gradient Descent** on Day 5, where you'll see how a machine automatically learns the best values of $w$ and $b$.
 
