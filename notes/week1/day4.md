@@ -519,17 +519,13 @@ $$
 Expand the square.
 
 $$
-(x+h)^2
-=
-
-x^2+2xh+h^2
+(x+h)^2=x^2+2xh+h^2
 $$
 
 Substitute:
 
 $$
-=
-\frac{x^2+2xh+h^2-x^2}{h}
+=\frac{x^2+2xh+h^2-x^2}{h}
 $$
 
 ---
