@@ -3655,7 +3655,7 @@ Here:
 
 If there are five predictions,
 
-$$
+<!-- $$
 \begin{bmatrix}
 82\
 75\
@@ -3692,6 +3692,45 @@ $$
 78\
 94\
 91\
+82
+\end{bmatrix}
+$$ -->
+$$
+\begin{bmatrix}
+82 \\
+75 \\
+91 \\
+88 \\
+79
+\end{bmatrix}
++
+3
+$$
+
+NumPy broadcasts the bias:
+
+$$
+\begin{bmatrix}
+82 \\
+75 \\
+91 \\
+88 \\
+79
+\end{bmatrix}
++
+\begin{bmatrix}
+3 \\
+3 \\
+3 \\
+3 \\
+3
+\end{bmatrix}
+=
+\begin{bmatrix}
+85 \\
+78 \\
+94 \\
+91 \\
 82
 \end{bmatrix}
 $$
