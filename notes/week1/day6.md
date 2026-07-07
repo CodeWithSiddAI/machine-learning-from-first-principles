@@ -351,11 +351,10 @@ we group the features into a vector:
 $$
 \mathbf{x}
 =
-
 \begin{bmatrix}
-x_1\
-x_2\
-x_3\
+x_1\\
+x_2\\
+x_3\\
 x_4
 \end{bmatrix}
 $$
@@ -365,11 +364,10 @@ and the weights into another vector:
 $$
 \mathbf{w}
 =
-
 \begin{bmatrix}
-w_1\
-w_2\
-w_3\
+w_1\\
+w_2\\
+w_3\\
 w_4
 \end{bmatrix}
 $$
@@ -377,13 +375,7 @@ $$
 The hypothesis becomes:
 
 $$
-\boxed{
-\hat{y}
-=
-\mathbf{w}^T\mathbf{x}
-+
-b
-}
+\boxed{\hat{y} = \mathbf{w}^T\mathbf{x}+b}
 $$
 
 This is simply the **dot product** you learned on **Day 2**.
