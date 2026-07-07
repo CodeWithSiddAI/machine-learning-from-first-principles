@@ -165,10 +165,10 @@ Notice the notation.
 Instead of one variable $x$, we now have:
 
 $$
-x_1,;x_2,;x_3,;\dots,;x_n
+x_1,x_2,x_3,\dots,x_n
 $$
 
-where (n) is the number of features.
+where $n$ is the number of features.
 
 ---
 
@@ -269,27 +269,11 @@ Now consider:
 
 Prediction:
 
-$$
-\hat{y} =
+$$\hat{y} = 50(15) + 10(3) - 2(10) + 30$$
 
-50(15)
-+
-10(3)
--
+$$=750+30-20+30$$
 
-2(10)
-+
-30
-$$
-
-$$
-=750+30-20+30
-$$
-
-$$
-
-=790
-$$
+$$=790$$
 
 The model combines the contribution of each feature to produce a single prediction.
 
@@ -456,8 +440,8 @@ For example:
 
 Here:
 
-* (m = 1000)
-* (n = 4)
+* ($m$ = 1000)
+* ($n$ = 4)
 
 ---
 
@@ -571,18 +555,7 @@ With multiple features:
 
 $$
 \boxed{
-\hat{y}
-=
-w_1x_1
-+
-w_2x_2
-+
-\cdots
-+
-w_nx_n
-+
-b
-}
+\hat{y} = w_1x_1 + w_2x_2 + \cdots + w_nx_n + b}
 $$
 
 Every prediction depends on:

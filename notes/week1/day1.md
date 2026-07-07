@@ -275,22 +275,21 @@ Machine learning often begins with a dataset.
 
 We represent it mathematically as:
 
-[
-D = {(x_i, y_i)}_{i=1}^{n}
-]
+
+$$D = {(x_i, y_i)}_{i=1}^{n}$$
 
 Where:
 
-* (D) = dataset
-* (n) = number of training examples
-* (x_i) = input (features) for the (i^{th}) example
-* (y_i) = correct output (target or label)
+* $D$ = dataset
+* $n$ = number of training examples
+* $x_i$ = input (features) for the (i^{th}) example
+* $y_i$ = correct output (target or label)
 
 At this stage, think of this notation as a compact way to describe a collection of examples. We will gradually build the mathematical meaning throughout the course.
 
 ---
 
-# Features (X) and Target (y)
+# Features ($X$) and Target ($y$)
 
 Suppose we want to predict house prices.
 
@@ -312,9 +311,7 @@ are called **features**.
 
 We usually denote them by:
 
-[
-X
-]
+$$X$$
 
 The output:
 
@@ -326,15 +323,12 @@ is called the **target**.
 
 We denote it by:
 
-[
-y
-]
+
+$$y$$
 
 So our learning problem is:
 
-[
-X \longrightarrow y
-]
+$$X \longrightarrow y$$
 
 The model learns a function that maps features to the target.
 
