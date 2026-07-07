@@ -3716,17 +3716,13 @@ $$
 91 \\
 88 \\
 79
-\end{bmatrix}
-+
-\begin{bmatrix}
+\end{bmatrix}+\begin{bmatrix}
 3 \\
 3 \\
 3 \\
 3 \\
 3
-\end{bmatrix}
-=
-\begin{bmatrix}
+\end{bmatrix} = \begin{bmatrix}
 85 \\
 78 \\
 94 \\
