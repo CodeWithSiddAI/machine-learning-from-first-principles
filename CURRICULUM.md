@@ -1,326 +1,788 @@
-# CURRICULUM.md
-
 # Machine Learning From First Principles
+## Complete 8-Week Curriculum (Version 3.0)
 
-## Duration
-
-6 Weeks
-
-42 Days
-
-7–8 Hours Daily
+> Learn Machine Learning from scratch by understanding **why algorithms work**, implementing them using **Python & NumPy**, and gradually transitioning to professional libraries.
 
 ---
 
-# Week 1 — Machine Learning Foundations
+# 📌 Course Information
 
-## Goal
+**Duration:** 8 Weeks
 
-Understand how machines learn continuous values and build the mathematical foundation for everything that follows.
+**Study Time:** 5–8 Hours/Day
 
-### Day 1
-
-* Introduction to AI, ML, and Deep Learning
-* Supervised vs Unsupervised Learning
-* Regression vs Classification
-* Features (X) and Target (y)
-* Machine Learning Pipeline
-
-### Day 2
-
-* Python for Machine Learning
-* NumPy
-* Vectors
-* Matrices
-* Dot Product
-* Broadcasting
-
-### Day 3
-
-* Linear Regression
-* Hypothesis Function
-* Cost Function
-* Mean Squared Error
-* Normal Equation (intuition)
-
-### Day 4
-
-* Calculus Refresher
-* Derivatives
-* Partial Derivatives
-* Gradients
-* Chain Rule (preview)
-
-### Day 5
-
-* Gradient Descent
-* Learning Rate
-* Epochs
-* Convergence
-* Vectorization
-
-### Day 6
-
-* Multiple Linear Regression
-* Feature Scaling
-* Standardization
-* Normalization
-
-### Day 7
-
-* Weekly Revision
-* House Price Prediction Project (from scratch)
+**Level:**
+Complete Beginner → Intermediate Machine Learning Engineer
 
 ---
 
-# Week 2 — Classification & Data Preparation
+# 🎯 Learning Philosophy
 
-### Day 8
+Every lesson follows the same structure.
 
-Classification and Decision Boundaries
-
-### Day 9
-
-Logistic Regression and Sigmoid Function
-
-### Day 10
-
-Binary Cross-Entropy and Confusion Matrix
-
-### Day 11
-
-Feature Engineering
-
-* One-Hot Encoding
-* Polynomial Features
-* Interaction Features
-
-### Day 12
-
-Data Cleaning
-
-* Missing Values
-* Outliers
-* Duplicates
-* Data Leakage
-* Introduction to Pandas
-
-### Day 13
-
-Bias–Variance Tradeoff
-Regularization
-
-* L1
-* L2
-* Elastic Net (intuition)
-
-### Day 14
-
-Weekly Revision
-Spam Classifier Project
+1. Learning Objectives
+2. Story-Based Motivation
+3. Problem Statement
+4. Intuition
+5. Mathematics
+6. Worked Examples
+7. Python Implementation
+8. Visualization
+9. Common Mistakes
+10. Practice Problems
+11. Coding Assignment
+12. Solutions
+13. Interview Questions
+14. Reflection
+15. Summary
 
 ---
 
-# Week 3 — Neural Networks
+# WEEK 1
+# Machine Learning Foundations ✅ (Completed)
 
-### Day 15
+## Day 1
+Introduction to AI & Machine Learning
 
-Why Neural Networks?
-
-### Day 16
-
-Network Architecture
-Neurons
-Activation Functions
-Weight Initialization
-
-### Day 17
-
-Forward Propagation
-
-### Day 18
-
-Backpropagation Intuition
-
-### Day 19
-
-Backpropagation Implementation
-
-### Day 20
-
-Training Deep Networks
-
-* ReLU
-* Softmax
-* Dropout
-* Batch Normalization (intuition)
-* Adam Optimizer
-
-### Day 21
-
-Weekly Revision
-MNIST Neural Network Project
+- AI
+- ML
+- Deep Learning
+- Types of Learning
+- ML Pipeline
 
 ---
 
-# Week 4 — Practical Machine Learning
+## Day 2
 
-### Day 22
+Python & Linear Algebra
 
-Pandas Masterclass
-EDA
-Visualization
+- Python Refresher
+- NumPy
+- Arrays
+- Vectors
+- Matrices
+- Dot Product
+- Broadcasting
 
-### Day 23
+---
+
+## Day 3
+
+Linear Regression
+
+- Hypothesis
+- Cost Function
+- MSE
+
+---
+
+## Day 4
+
+Calculus
+
+- Derivatives
+- Partial Derivatives
+- Gradient
+
+---
+
+## Day 5
+
+Gradient Descent
+
+- Learning Rate
+- Epochs
+- Convergence
+
+---
+
+## Day 6
+
+Multiple Linear Regression
+
+- Feature Scaling
+- Standardization
+- Normalization
+
+---
+
+## Day 7
+
+Week Revision
+
+House Price Prediction Project
+
+Interview
+
+Quiz
+
+---
+
+# WEEK 2
+# Classification & Data Preparation
+
+## Day 8
+
+Introduction to Classification
+
+- Why Regression Fails
+- Classification Problems
+- Decision Boundary
+- Logistic Regression
+- Sigmoid Function
+- Probability Interpretation
+
+---
+
+## Day 9
+
+Training Logistic Regression
+
+- Binary Cross Entropy
+- Cost Function
+- Gradient Descent
+- Vectorized Implementation
+
+Project:
+Customer Purchase Prediction
+
+---
+
+## Day 10
+
+Preparing Data Properly
+
+- Train/Test Split
+- Validation Set
+- Test Set
+- Generalization
+- Data Leakage
+- Random State
+
+---
+
+## Day 11
 
 Evaluation Metrics
 
-* Accuracy
-* Precision
-* Recall
-* F1
-* ROC-AUC
-* PR Curve
-* Error Analysis
+- Confusion Matrix
+- Accuracy
+- Precision
+- Recall
+- Specificity
+- F1 Score
+- ROC Curve
+- AUC
 
-### Day 24
+---
 
-Validation
+## Day 12
 
-* Train/Validation/Test
-* K-Fold Cross Validation
-* Hyperparameter Tuning
+Feature Engineering
 
-### Day 25
+- Categorical Variables
+- Label Encoding
+- One-Hot Encoding
+- Polynomial Features
+- Feature Selection
+- Correlation
 
-Tree-Based Models
+---
 
-* Decision Trees
-* Random Forests
-* Gradient Boosting
-* XGBoost (intuition)
-* LightGBM (overview)
-* CatBoost (overview)
+## Day 13
 
-### Day 26
+Data Cleaning
 
-Unsupervised Learning
+- Missing Values
+- Outliers
+- Duplicate Records
+- Pandas Introduction
+- Data Visualization
 
-* K-Means
-* PCA
-* Anomaly Detection
-* Clustering Overview
+---
 
-### Day 27
+## Day 14
+
+Classification Project
+
+Spam Detection
+
+Week Revision
+
+Quiz
+
+Interview Questions
+
+---
+
+# WEEK 3
+# Classical Machine Learning
+
+## Day 15
+
+Decision Trees
+
+- Intuition
+- Tree Construction
+- Splitting
+
+---
+
+## Day 16
+
+Entropy
+
+Information Gain
+
+Gini Index
+
+Tree Depth
+
+Pruning
+
+---
+
+## Day 17
+
+Random Forest
+
+Bagging
+
+Bootstrap Sampling
+
+Feature Randomness
+
+---
+
+## Day 18
+
+Boosting
+
+AdaBoost
+
+Gradient Boosting
+
+XGBoost (Conceptual)
+
+---
+
+## Day 19
+
+Support Vector Machines
+
+Margins
+
+Hyperplanes
+
+Kernel Intuition
+
+---
+
+## Day 20
+
+K-Nearest Neighbors
+
+Distance Metrics
+
+Choosing K
+
+Curse of Dimensionality
+
+---
+
+## Day 21
+
+Projects
+
+Titanic Survival Prediction
+
+Decision Tree Project
+
+Revision
+
+---
+
+# WEEK 4
+# Unsupervised Learning
+
+## Day 22
+
+Introduction
+
+Clustering
+
+Dimensionality Reduction
+
+---
+
+## Day 23
+
+K-Means
+
+Centroids
+
+Inertia
+
+Elbow Method
+
+---
+
+## Day 24
+
+Hierarchical Clustering
+
+DBSCAN
+
+Comparison
+
+---
+
+## Day 25
+
+Principal Component Analysis
+
+Variance
+
+Eigenvectors (Intuition)
+
+Dimensionality Reduction
+
+---
+
+## Day 26
+
+Anomaly Detection
+
+Density
+
+Distance-Based Detection
+
+---
+
+## Day 27
 
 Customer Segmentation Project
 
-### Day 28
+---
 
-Heart Disease Prediction Project
+## Day 28
+
+Week Revision
+
+Quiz
+
+Interview Questions
 
 ---
 
-# Week 5 — Professional Machine Learning
+# WEEK 5
+# Neural Networks From Scratch
 
-### Day 29
+## Day 29
 
-Scikit-Learn Pipelines
+Why Neural Networks?
+
+Perceptron
+
+Linear Model Limitations
+
+---
+
+## Day 30
+
+Neurons
+
+Layers
+
+Weights
+
+Bias
+
+Activation Functions
+
+---
+
+## Day 31
+
+Forward Propagation
+
+Loss Functions
+
+---
+
+## Day 32
+
+Backpropagation
+
+Chain Rule
+
+Computational Graph
+
+---
+
+## Day 33
+
+Backpropagation From Scratch
+
+NumPy Implementation
+
+---
+
+## Day 34
+
+Optimization
+
+ReLU
+
+Softmax
+
+Dropout
+
+Batch Normalization
+
+Adam
+
+---
+
+## Day 35
+
+Digit Recognition Project
+
+Revision
+
+---
+
+# WEEK 6
+# Deep Learning with PyTorch
+
+## Day 36
+
+PyTorch Basics
+
+Tensors
+
+Autograd
+
+GPU
+
+---
+
+## Day 37
+
+Building Neural Networks
+
+Training Loop
+
+Dataset
+
+DataLoader
+
+---
+
+## Day 38
+
+Convolutional Neural Networks
+
+Images
+
+Filters
+
+Pooling
+
+---
+
+## Day 39
+
+Transfer Learning
+
+Fine Tuning
+
+---
+
+## Day 40
+
+Sequence Models
+
+RNN
+
+LSTM
+
+GRU
+
+---
+
+## Day 41
+
+Transformers (Introduction)
+
+Attention Intuition
+
+Why Transformers Matter
+
+---
+
+## Day 42
+
+Image Classification Project
+
+Week Revision
+
+Quiz
+
+---
+
+# WEEK 7
+# Professional Machine Learning
+
+## Day 43
+
+Pandas Masterclass
+
+EDA
+
+Cleaning
+
+Visualization
+
+---
+
+## Day 44
+
+Scikit-Learn
+
+Pipelines
+
 ColumnTransformer
 
-### Day 30
+---
+
+## Day 45
+
+Hyperparameter Tuning
+
+Grid Search
+
+Random Search
+
+Cross Validation
+
+---
+
+## Day 46
+
+Model Selection
+
+Bias vs Variance
+
+Learning Curves
+
+Validation Curves
+
+---
+
+## Day 47
 
 Explainable AI
 
-* Feature Importance
-* Permutation Importance
-* SHAP (intuition)
+Feature Importance
 
-### Day 31
+SHAP
 
-Model Persistence
-Deployment Basics
-Simple Prediction API
+Permutation Importance
 
-### Day 32
+---
 
-Experimentation
-Learning Curves
-Validation Curves
+## Day 48
+
+Model Debugging
+
+Error Analysis
+
+Improving Models
+
+---
+
+## Day 49
+
+Real Industry Project
+
+End-to-End Tabular ML
+
+---
+
+# WEEK 8
+# Capstone & Portfolio
+
+## Day 50
+
+Project Planning
+
+Understanding Business Problems
+
+---
+
+## Day 51
+
+Data Collection
+
+Cleaning
+
+EDA
+
+---
+
+## Day 52
+
+Feature Engineering
+
+Training
+
+Evaluation
+
+---
+
+## Day 53
+
 Model Comparison
 
-### Day 33
-
-Recommendation Systems
-Collaborative Filtering
-Matrix Factorization
-
-### Day 34
-
-Introduction to Time Series
-Trend
-Seasonality
-Forecasting Concepts
-
-### Day 35
-
-Titanic Survival Project
+Hyperparameter Tuning
 
 ---
 
-# Week 6 — Modern AI Foundations
+## Day 54
 
-### Day 36
+Deployment Basics
 
-Embeddings
-Vector Representations
-Similarity Search
+Saving Models
 
-### Day 37
+Loading Models
 
-Attention and Transformers
-Encoder
-Decoder
-Self-Attention
-
-### Day 38
-
-Transfer Learning
-Fine-Tuning
-Foundation Models
-Prompt Engineering vs Fine-Tuning
-
-### Day 39
-
-MLOps Fundamentals
-Experiment Tracking
-Model Registry
-Monitoring
-Concept Drift
-Responsible AI
-
-### Day 40
-
-Machine Learning Interview Preparation
-
-### Day 41
-
-Capstone Project — Part 1
-
-### Day 42
-
-Capstone Project — Part 2
+Making Predictions
 
 ---
 
-# Expected Outcomes
+## Day 55
 
-After completing the course, the student should be able to:
+Portfolio Building
 
-* Explain core ML concepts from first principles.
-* Implement major algorithms from scratch using Python and NumPy.
-* Use professional ML libraries effectively.
-* Build complete end-to-end ML pipelines.
-* Evaluate and improve models using appropriate metrics.
-* Understand the foundations of modern AI systems.
-* Complete intermediate-level ML interviews and practical projects with confidence.
+GitHub
+
+README
+
+Documentation
+
+---
+
+## Day 56
+
+Final Capstone Presentation
+
+Final Quiz
+
+Interview Preparation
+
+Course Wrap-up
+
+---
+
+# Projects
+
+Week 1
+
+✅ House Price Prediction
+
+Week 2
+
+✅ Spam Detection
+
+Week 3
+
+✅ Titanic Survival Prediction
+
+Week 4
+
+✅ Customer Segmentation
+
+Week 5
+
+✅ Digit Recognition (NumPy)
+
+Week 6
+
+✅ Image Classification (PyTorch)
+
+Week 7
+
+✅ End-to-End Tabular ML
+
+Week 8
+
+✅ Final Capstone
+
+---
+
+# Skills You'll Learn
+
+Programming
+
+- Python
+- NumPy
+- Pandas
+- Matplotlib
+- Seaborn
+
+Machine Learning
+
+- Regression
+- Classification
+- Clustering
+- PCA
+- Decision Trees
+- Random Forest
+- SVM
+- KNN
+
+Deep Learning
+
+- Neural Networks
+- CNN
+- RNN
+- LSTM
+- Transformers (Introduction)
+- PyTorch
+
+Professional Skills
+
+- Scikit-Learn
+- Model Evaluation
+- Feature Engineering
+- Hyperparameter Tuning
+- Portfolio Development
+
+---
+
+# Final Outcome
+
+By the end of this course, you will be able to:
+
+✅ Explain machine learning algorithms from first principles.
+
+✅ Implement core algorithms from scratch using Python and NumPy.
+
+✅ Build deep learning models using PyTorch.
+
+✅ Use Scikit-Learn professionally.
+
+✅ Build complete machine learning projects.
+
+✅ Prepare a GitHub portfolio.
+
+✅ Pass beginner-to-intermediate ML interviews.
+
+---
+
+# Repository Goal
+
+This repository is designed to be a **free, textbook-quality Machine Learning course** that emphasizes deep understanding over memorization.
+
+> Learn **why** Machine Learning works, not just **how** to call library functions.
