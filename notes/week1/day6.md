@@ -693,34 +693,19 @@ Every weight gets updated independently.
 For the first weight:
 
 $$
-w_1
-:=
-w_1
--
-\alpha
-\frac{\partial J}{\partial w_1}
+w_1 := w_1 - \alpha \frac{\partial J}{\partial w_1}
 $$
 
 Second weight:
 
 $$
-w_2
-:=
-w_2
--
-\alpha
-\frac{\partial J}{\partial w_2}
+w_2 := w_2 - \alpha \frac{\partial J}{\partial w_2}
 $$
 
 Third weight:
 
 $$
-w_3
-:=
-w_3
--
-\alpha
-\frac{\partial J}{\partial w_3}
+w_3 := w_3 - \alpha \frac{\partial J}{\partial w_3}
 $$
 
 ...
@@ -728,13 +713,7 @@ $$
 Bias:
 
 $$
-b
-:=
-b
--
-
-\alpha
-\frac{\partial J}{\partial b}
+b := b - \alpha \frac{\partial J}{\partial b}
 $$
 
 Notice the pattern.
@@ -747,13 +726,12 @@ Only the derivative changes.
 
 # 7. The Gradient Formula for Any Weight
 
-For the (j)-th weight:
+For the ($j$)-th weight:
 
 $$
 \boxed{
 \frac{\partial J}{\partial w_j}
-=
-\frac1m
+=\frac{1}{m}
 \sum_{i=1}^{m}
 (\hat y_i-y_i)x_{ij}
 }
@@ -804,14 +782,7 @@ Each gradient measures the influence of **one feature**, allowing the model to a
 Suppose our model has two features:
 
 $$
-\hat y
-=
-
-w_1x_1
-+
-w_2x_2
-+
-b
+\hat y = w_1x_1 + w_2x_2 + b
 $$
 
 Assume:
@@ -945,11 +916,7 @@ The `@` operator performs **matrix multiplication** (dot product).
 For every training example:
 
 $$
-\hat y
-=
-\mathbf{w}^T\mathbf{x}
-+
-b
+\hat y = \mathbf{w}^T\mathbf{x} + b
 $$
 
 This is much cleaner than manually writing:
@@ -1029,8 +996,8 @@ Confusing the number of features with the number of training examples.
 
 Remember:
 
-* **Rows** = training examples ((m))
-* **Columns** = features ((n))
+* **Rows** = training examples ($m$)
+* **Columns** = features ($n$)
 
 ---
 
