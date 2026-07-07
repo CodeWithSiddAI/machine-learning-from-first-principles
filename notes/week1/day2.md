@@ -120,19 +120,17 @@ By the end of Day 2, you'll be able to:
 
 Tomorrow (Day 3), we'll write equations like:
 
-[
-\hat{y} = Xw + b
-]
+$$\hat{y} = Xw + b$$
 
 Right now, this may look mysterious.
 
 By the end of Day 2, every symbol in that equation will make sense:
 
-* (X): the feature matrix
-* (w): the vector of model weights
-* (b): the bias term
-* (Xw): a dot product between the data and the weights
-* (\hat{y}): the model's predicted output
+* $X$: the feature matrix
+* $w$: the vector of model weights
+* $b$: the bias term
+* $Xw$: a dot product between the data and the weights
+* $\hat{y}$: the model's predicted output
 
 This equation is the foundation of linear regression and, with extensions, much of modern machine learning.
 
@@ -1609,7 +1607,7 @@ $$
 
 Here:
 
-* (\mathbf{x}) is the vector's name.
+* $\mathbf{x}$ is the vector's name.
 * Each entry is one feature.
 * The vector has **3 components**, so it is a **3-dimensional vector**.
 
@@ -1622,9 +1620,7 @@ In machine learning, the dimension of a vector equals the number of features des
 ## Row Vector
 
 $$
-\mathbf{x}
-=
-
+\mathbf{x}=
 \begin{bmatrix}
 2 & 5 & 8
 \end{bmatrix}
@@ -1705,9 +1701,7 @@ $$
 Add them component by component:
 
 $$
-\mathbf{a} + \mathbf{b}
-=
-
+\mathbf{a} + \mathbf{b} =
 \begin{bmatrix}
 75 \\
 83 \\
@@ -1726,17 +1720,16 @@ Vectors can only be added if they have the **same number of components**.
 Suppose every student's marks are doubled.
 
 $$
-2
-\begin{bmatrix}
-70\\
-80\\
+2\begin{bmatrix}
+70 \\
+80 \\
 90
 \end{bmatrix}
 =
 
 \begin{bmatrix}
-140\
-160\
+140 \
+160 \
 180
 \end{bmatrix}
 $$
