@@ -349,14 +349,18 @@ $$
 we group the features into a vector:
 
 $$
-\mathbf{x}=\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}
+\mathbf{x}=\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4
+\end{bmatrix}
 $$
 
 and the weights into another vector:
 
 $$
-\mathbf{w}
-=
+\mathbf{w}=
 \begin{bmatrix}
 w_1\\
 w_2\\
