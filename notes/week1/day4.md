@@ -535,15 +535,13 @@ $$
 Cancel like terms.
 
 $$
-=
-\frac{2xh+h^2}{h}
+=\frac{2xh+h^2}{h}
 $$
 
 Factor out (h):
 
 $$
-=
-\frac{h(2x+h)}{h}
+=\frac{h(2x+h)}{h}
 $$
 
 Cancel (h):
@@ -569,12 +567,10 @@ $$
 Therefore:
 
 $$
-\boxed{
-\frac{d}{dx}(x^2)=2x
-}
+\boxed{\frac{d}{dx}(x^2)=2x}
 $$
 
-This is the derivative of (x^2).
+This is the derivative of ($x^2$).
 
 ---
 
@@ -612,9 +608,7 @@ The first-principles definition is beautiful, but it's slow.
 
 Imagine differentiating:
 
-$
-5x^7+3x^5-8x^2+10
-$
+$(5x^7+3x^5-8x^2+10)$
 
 Every time.
 
@@ -649,9 +643,7 @@ $$
 Therefore:
 
 $$
-\boxed{
-\frac{d}{dx}(c)=0
-}
+\boxed{\frac{d}{dx}(c)=0}
 $$
 
 where (c) is any constant.
@@ -685,9 +677,7 @@ $$
 then
 
 $$
-\boxed{
-\frac{d}{dx}(x^n)=nx^{n-1}
-}
+\boxed{\frac{d}{dx}(x^n)=nx^{n-1}}
 $$
 
 Examples:
@@ -718,30 +708,20 @@ $$
 Leave the constant alone and differentiate the function.
 
 $$
-\boxed{
-\frac{d}{dx}[c,f(x)]
-=
-
-c,f'(x)
-}
+\boxed{\frac{d}{dx}[c,f(x)]=c,f'(x)}
 $$
 
 Example:
 
 $$
-\frac{d}{dx}(5x^3)
-=
-
-15x^2
+\frac{d}{dx}(5x^3)=15x^2
 $$
 
 
 Another:
 
 $$
-\frac{d}{dx}(8x^2)
-=
-16x
+\frac{d}{dx}(8x^2)=16x
 $$
 
 ---
@@ -753,32 +733,19 @@ Differentiate each term independently.
 Example:
 
 $$
-f(x)
-=
-
-x^3
-+
-4x^2
-+
-7
+f(x)=x^3+4x^2+7
 $$
 
 Derivative:
 
 $$
-3x^2
-+
-8x
-+
-0
+3x^2+8x+0
 $$
 
 Final answer:
 
 $$
-\boxed{
-3x^2+8x
-}
+\boxed{3x^2+8x}
 $$
 
 ---
@@ -918,9 +885,9 @@ $$
 
 ❌ **Mistake 3:** Forgetting that constants disappear.
 
-[
+$$
 \frac{d}{dx}(25)=0
-]
+$$
 
 ---
 
@@ -1048,8 +1015,8 @@ We don't have one variable.
 
 We have **two parameters**:
 
-* (w)
-* (b)
+* $w$
+* $b$
 
 Our cost function is therefore:
 
@@ -1059,8 +1026,8 @@ $$
 
 This means the cost changes if:
 
-* we change (w),
-* we change (b),
+* we change $w$,
+* we change $b$,
 * or we change both.
 
 A normal derivative can only handle **one variable**.
@@ -1132,43 +1099,37 @@ The curly symbol **∂** reminds us:
 
 Suppose
 
-[
+$$
 f(x,y)=3x^2+2y
-]
+$$
 
 ### Partial derivative with respect to (x)
 
-Treat (y) as a constant.
+Treat $y$ as a constant.
 
 $$
-\frac{\partial f}{\partial x}
-=
-
-6x
+\frac{\partial f}{\partial x}=6x
 $$
 
 because
 
-* derivative of (3x^2) is (6x),
-* derivative of (2y) is (0) (since (y) is treated as a constant).
+* derivative of $3x^2$ is (6x),
+* derivative of $2y$ is (0) (since (y) is treated as a constant).
 
 ---
 
 ### Partial derivative with respect to (y)
 
-Now keep (x) fixed.
+Now keep $x$ fixed.
 
 $$
-\frac{\partial f}{\partial y}
-=
-
-2
+\frac{\partial f}{\partial y}=2
 $$
 
 because
 
-* (3x^2) behaves like a constant,
-* derivative of (2y) is (2).
+* $3x^2$ behaves like a constant,
+* derivative of $2y$ is (2).
 
 ---
 
@@ -1212,9 +1173,7 @@ $$
 the gradient is
 
 $$
-\nabla J
-=
-
+\nabla J=
 \left[
 \frac{\partial J}{\partial w},
 \frac{\partial J}{\partial b}
@@ -1473,9 +1432,9 @@ $$
 
 Given:
 
-[
+$$
 f(x,y)=x^3+2xy
-]
+$$
 
 Find:
 
